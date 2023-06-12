@@ -22,7 +22,6 @@
 		<typeAlias type="com.multi.muluckup.diary.diaryVO" alias="diaryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.business.BusinessVO" alias="businessVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.business.PageVO" alias="pageVO"></typeAlias>
-		<!-- <typeAlias type="com.multi.muluck.mmti.MmtiVO" alias="mmtiVO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
 		<!-- SQL문 정의하는 파일들의 목록을 지정 -->
