@@ -17,20 +17,20 @@
 	<%@ include file="../../../nav_header.jsp"%>
 		<input  type="hidden" name="member_no" value="${member_no}">
 
-		<ul class="viewcard_total">
+		<ul class="viewcard_total viewcard_total1">
 			<li class="viewcard">
 				<div class="thumbnail1">
 					<img class="thumbnail2" src="" onerror="this.src='../resources/img/mulucklogo.jpg'">
 				</div>
 				<div class="thumbnail_title">
-					<p class="viewcard_title">${diary_nickname}의오늘은 어땠나요?</p>
+					<p class="viewcard_title">${diary_nickname}의 오늘은 어땠나요?</p>
 					<a href="diary.jsp?diary_nickname=${diary_nickname}">&#x1F331 써보기 &#x1F331</a>
 				</div>
 			</li>
 		</ul>
+	<ul class="viewcard_total">
 	<c:forEach items="${list}" var="bag">
 		<div>
-			<ul class="viewcard_total">
 				<li class="viewcard">
 					<div class="thumbnail1">
 						<img class="thumbnail2" src="../resources/upload/diary/${bag.diary_img}" onerror="this.src='../resources/img/mulucklogo.jpg'">
@@ -42,8 +42,8 @@
 						<p class="viewcard_date">날짜: ${bag.diary_date}</p>
 					</div>
 				</li>
-			</ul>
 		</div>
 	</c:forEach>
+	</ul>
 </body>
 </html>
