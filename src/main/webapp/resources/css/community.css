@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+}
+
+a {
+	 text-decoration-line: none;
+}
+
+#h5 {
+	 font-family: 'KOTRAHOPE';
+	 font-size: 30px;
+}
+
+#h3 {
+	 font-family: 'KOTRAHOPE';
+	 font-size: 30px;
+}
+
+hr {
+	margin-left : auto;
+	margin-right : auto;
+}
+
+/* 버튼 기본값 */
+/* 팔로우, 댓글달기, 목록으로 돌아가기 버튼 */
+button {
+	border: none;
+	color: #F1F1E1;
+	background-color: #335D3B;
+	border-radius: 5px;
+}
+
+/* 검색, 글쓰기, 수정, 삭제 버튼 */
+.button1 {
+	width: 60px;
+  	height: 40px;
+}
+
+/* 좋아요, 북마크 버튼*/
+.button2 {
+	background-color: #F1F1E1;
+}
+
+/* 검색 input */
+input {
+	width: 800px;
+  	height: 40px;
+  	font-size: 15px;
+  	border: 0;
+  	border-radius: 15px;
+  	outline: none;
+  	padding-left: 10px;
+  	background-color: rgb(233, 233, 233);
+}
+
+#img {
+	border: none;
+	background: transparent;
+}
+
+/* 댓글 */
+#reply {
+	width: 200px;
+	height: 30px;
+	margin-top: 50px;
+}
+
+#category_list {
+	width: 250px;
+	height: 700px;
+	margin-top: 50px;
+	float: left;
+	/* background-color: blue; */
+	/* 카테고리 메뉴 고정 */
+	position: sticky;
+	position: -webkit-sticky;
+	top: -60px;
+	/* position: fixed; */
+}
+
+.category_list {
+	margin-top: 30px;
+}
+
+.category {
+	color: black;
+	font-weight: bold;
+	 font-family: 'KOTRAHOPE';
+	 font-size: 50px;
+}
+
+/* 글쓰기 버튼(우측 상단) */
+#insert_button {
+	width: 250px;
+	height: 700px;
+	margin-top: 80px;
+	float: right;
+	/* background-color: red; */
+}
+
+#community_center {
+	position:absolute;
+	left:25%;
+	margin-left:-50px;
+	/* background-color: yellow; */
+}
+
+/* 검색 zone(중앙 상단) */
+#bbs_one {
+	margin-top: 80px;
+}
+
+/* 검색 결과(사진, 제목, 글, 댓글 등등등 */
+.bbs_one {
+	margin-top: 50px;
+}
+
+#bbs_list {
+	margin-top: 50px;
+}
+
+.bbs_insert {
+	margin-top: 100px;
+}
+
+#up_del_button {
+	margin-top: 50px;
+}
+
+.bbs_update {
+	margin-top: 100px;
+}
+
+.bbs_delete {
+	margin-top: 100px;
+}
+
+.bbs_ok {
+	margin-top: 150px;
+}
+
+#result {
+	margin-top: 50px;
+}
+
+/* 커뮤니티 배너 */
+#banner {
+	margin-top: 120px;
+	position:absolute;
+	left:27%;
+	margin-left:-50px;
+	
+}
+
+#heart_book_button {
+	margin-top: 50px;
+}
+
+#bbs_reply {
+	margin-top: 50px;
+}
+
+#reply_list {
+	margin-top: 30px;
+}
+
+.user {
+	margin-top: 50px;
+/* 	float: left; */
+}
+
+/* 게시글 목록 사진 왼쪽에 위치 */
+.bbs_post {
+	display: flex;
+	align align-items: center;
+}
+
+.bbs_content {
+	flex: 1;
+	margin-right: 10px; /* Add some spacing between content and image */
+}
+
+.bbs_content h5 {
+	margin-top: 0;
+}
+
+.bbs_content p {
+	margin-bottom: 0;
+}

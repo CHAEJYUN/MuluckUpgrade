@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="diary">
+	<!-- insert, delete, update는 무조건 resultType="int"이므로 프로그래머가 써주지 않아도 이미 resultType="int"가 있는 것으로 본다 -->
+	
+	<!-- diary_.jsp에 받을 mapper -->
+	<insert id="create" parameterType="diaryVO">
+		insert into diary(diary_img, diary_nickname, diary_title, diary_contents, diary_mood, diary_date, member_no)
+		values (#{diary_img}, #{diary_nickname}, #{diary_title}, #{diary_contents}, #{diary_mood}, sysdate(), #{member_no})
+	</insert>
+
+	<!-- diary__first에 받을 mapper -->
+	<insert id="create2" parameterType="diaryVO">
+		insert into diary(diary_img, diary_nickname, diary_title, diary_contents, diary_mood, diary_date, member_no)
+		values (#{diary_img}, #{diary_nickname}, #{diary_title}, #{diary_contents}, #{diary_mood}, sysdate(), #{member_no})
+	</insert>
+	
+<!-- 	<delete id="del"  parameterType="String"> 
+	parameterType에 String나 memberVO를 그대로 써도 상관없음. memberVO를 사용해도 VO 안에 이미 id를 String으로 받기 때문에 문제안됨.
+		delete from kids 
+		where no = #{no}
+	</delete>
+	
+	<update id="up"  parameterType="kidsVO">
+		update kids
+		set tel = #{tel} 
+		where no = #{no}
+	</update>
+	
+	<select id="one" parameterType="kidsVO" resultType="kidsVO">
+		select *
+		from kids
+		where no = #{no}
+	</select> -->
+
+	<!-- cardview_list에 받을 mapper -->
+	<select id="list" resultType="diaryVO">
+		select t1.diary_no, t1.diary_img, t1.diary_nickname, t1.diary_title, t1.diary_mood, t1.diary_date
+		from diary t1
+		inner join (
+		select diary_nickname, MAX(diary_date) AS max_date
+		from diary
+		group by diary_nickname
+		) t2 on t1.diary_nickname = t2.diary_nickname AND t1.diary_date = t2.max_date
+		where t1.diary_nickname in (
+		select diary_nickname
+		from diary
+		group by diary_nickname)
+	</select>
+	
+	
+	<!-- cardview_individual에 받을 mapper -->
+	<select id="list2" resultType="diaryVO" parameterType="diaryVO"> 
+		select diary_no, diary_img, diary_nickname, diary_title, diary_contents, diary_mood, diary_date
+		from diary
+		where diary_nickname = #{diary_nickname} and member_no = #{member_no}
+	</select>
+	
+	<!-- vo와 db table이 같을 때는 자동으로 컬럼명과 동일한 vo의 변수에 자동으로 넣어줌. vo와 db table이 다를 때는 수동으로 어떤 컬럼명에서 꺼내서 vo의 변수에 넣어줄지
+		 mapping을 해주어야 함.
+		 
+		 <resultMap type="memberVO" ID="map1">
+		 	<result property="id" column="id"/>
+		 </resultMap>
+		  -->
+	
+</mapper>

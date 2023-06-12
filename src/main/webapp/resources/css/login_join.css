@@ -1,0 +1,266 @@
+@charset "UTF-8";
+.muluck_logo {
+	text-align: center;
+}
+
+.muluck_logo > img {
+	width: 200px;
+	height: 200px;
+}
+
+.go_login {
+	text-align: right;
+}
+
+.go_login button {
+	background: white;
+  	border: none;
+	width: 25px;
+	text-align: center;
+	margin-right: 5px;
+}
+.go_login button:hover {
+  box-shadow: 0px 0px 5px #888;
+}
+
+
+/* 폰트 */
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	background: #F2F1DF;
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+}
+
+.myform {
+	background: white;
+  	width: 50%;
+	margin: auto;
+	height: auto;
+	box-shadow: 0px 0px 3px 1px rgba(38, 35, 128, 1);
+	min-width: 300px;
+  	min-height: 400px;
+  	max-width: 350px;
+  	max-height: 700px;
+}
+
+.myform a {
+	text-decoration: underline;
+	color: black;
+	font-family: KOTRAHOPE';
+	font-size: 15px;
+}
+
+.title {
+	color: black;
+	font-weight: bold;
+	font-size: 20pt;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#login_title {
+	padding-top: 20px;
+}
+
+.center {
+	width: 90%;
+	margin: 15px auto;
+	text-align: center;
+}
+
+	
+#table1 {
+	width: 50px;
+	margin: auto;
+	height: auto;
+}
+
+/* #table2 {
+	width: 98%;
+    margin-left:10%; 
+    margin-right:auto;
+} */
+
+.input_login {
+	height: 30px;
+	width: 80%;
+	margin: 5px auto;
+	border-radius: 3px;
+	color: black;
+	background: white;
+	padding-left: 5px;
+	font-family: 'KOTRAHOPE';
+	font-style: normal;
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: inherit;
+}
+
+.input_join{
+	height: 20px;
+	border-radius: 3px;
+	color: black;
+	background: white;
+	padding-left: 5px;
+	font-family:  'KOTRAHOPE';
+	font-style: normal;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: inherit;
+}
+
+input::placeholder {
+	font-style: normal;
+	font-family:  'KOTRAHOPE';
+	font-size: 12px;
+	color: #808080;
+}
+
+td {
+	font-size: 12px;
+	font-weight: bold;
+ 	text-align: center;
+}
+
+#table1 tr{
+	height: auto;
+}
+
+.text1 {
+	font-size: 15px;
+	margin-left: 10%;
+	text-align: left;
+}
+
+.t1{
+	width: 55%; 
+}
+
+.checkbtn {
+	font-size: 12px;
+	border-radius: 3px;
+	width: 60px;
+	height: 25px;
+	background: black;
+	color: white;
+	margin-left: 15px;
+	font-family: 'KOTRAHOPE';
+}
+
+.sameCheck {
+	height: auto;
+	margin-left: 5px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+}
+#loginResult {
+	text-align: center;
+}
+
+.btn {
+	height: 40px;
+	width: 82%;
+	border-radius: 3px;
+	border-color: black;
+	margin: 5px auto;
+	font-family: 'KOTRAHOPE';
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.black_btn {
+	background: black;
+	color: white;
+}
+
+.white_btn {
+	background: white;
+	color: black;
+}
+
+::-webkit-input-placeholder {
+	/* Chrome/Opera/Safari */
+	color: #cccccc;
+}
+
+::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #cccccc;
+}
+
+:-ms-input-placeholder {
+	/* IE 10+ */
+	color: #cccccc;
+}
+
+:-moz-placeholder {
+	/* Firefox 18- */
+	color: #cccccc;
+}
+
+@media screen and (max-width:500px) {
+	.myform {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width:800px) {
+	.myform {
+		width: 60%;
+	}
+}
+
+.text {
+	width:90%;
+    height: 90px; border: 1px solid black; background-color: white;
+    white-space: pre-line; overflow-y: scroll; margin: 0 auto 10px;
+    font-size: 12px;
+}
+#assentCheck {
+	font-size: 12px;
+	margin-right: 10%;
+	text-align: right;
+}
+input[type="checkbox"] {
+	width: 12px;
+	height: 12px;
+	vertical-align: -3px;
+}
+
+.solo{
+	width:200px;
+}
+
+.notsolo{
+	width: 150;
+}
+
+/* SNS로그인 */
+#logo {
+	padding-bottom: 10px;
+	margin-top: 20px;
+}
+
+
+#idpwTable {
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#go_login {
+	margin-top: 20px;
+	box-shadow: 0px 0px 1px 1px rgba(38, 35, 128, 1);;
+}
+
+.cBc.active {
+	background-color: black;
+	color: white;
+}

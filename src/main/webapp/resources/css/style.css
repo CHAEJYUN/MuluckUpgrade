@@ -1,0 +1,112 @@
+@charset "UTF-8";
+	
+	body{
+		background-color : #f2f1df;
+	}
+	
+	.btn-link:hover {
+		background-color:#eaf2df;
+	}
+	
+	figure{
+		width: 100%;
+		height: calc(100vh -120px); /*전체 브라우저 높이에서 120px만큼 빼줌*/
+		position: relative;
+		overflow: hidden;
+		padding-top: 250px;
+	}
+
+	figure video{
+		object-fit: cover; /*영상을 figure 영역안에 꽉 차도록 설정*/
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	
+	figure .inner{
+		width: 1180px;
+		margin: 0px auto;
+		position: relative;
+	}
+	
+	figure .inner h2{
+		font: normal 120px/1 "arial";
+		color: #fbfbf4;
+		margin-bottom: 20px;
+	}
+	
+	figure .inner p{
+		font: 16px/1.4 "arial";
+		color:#f2f1df;
+		margin-bottom: 60px;
+	}
+	
+/*---------------------------------------------section---------------------------------------------------*/	
+	section {
+		width: 100%;
+		padding: 200px 0px;
+	}
+	
+	section .inner{
+		width: 100%;
+		margin: 0px auto;
+	}
+	
+	section .inner h1{
+		font: bold 24px/1 "arial";
+		color: #555;
+		text_align: center;
+		margin-bottom: 10px;
+	}
+	
+	section .inner .wrap{
+		width: 100%;
+	}
+	
+	section .inner .wrap::after{ /*자식 요소의 article float해제*/
+		content: "";
+		display: block;
+		clear: both;
+	}
+	
+	section .inner .wrap article{
+		width: 280px;
+		float: left;
+		margin-right: 20px;
+	}
+	
+	section .inner .wrap article:last-child{ /*맨 오른쪽 마지막 요소의 여백만 제거*/
+		margin-right: 0px;
+	}
+
+	section .inner .wrap article h2{
+		margin-bottom: 10px;
+	}
+
+	section .inner .wrap article h2 a{
+		font:bold 16px/1 "arial";
+		color:#555;
+	}
+
+	section .inner .wrap article p{
+		font: 14px/1.4 "arial";
+		color:#777;
+	}
+
+	section .inner .wrap article .pic{
+		width: 100%;
+		height: 120px;
+		background: #333;
+		margin-bottom: 15px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	section .inner .wrap article .pic img{
+		object-fit: cover; /*pic프레임 안에 이미지를 꽉 채움*/
+		width: 100%;
+		height: 100%;
+	}
