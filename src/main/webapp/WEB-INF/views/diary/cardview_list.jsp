@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<ul class="viewcard_total">
+<ul class="viewcard_total viewcard_total1">
 	<li class="viewcard">
 		<div class="thumbnail1">
 			<img class="thumbnail2" src="" onerror="this.src='../resources/img/mulucklogo.jpg'">
@@ -14,11 +14,10 @@
 		</div>
 	</li>
 </ul>
-
 <!-- 식물 nickname에 대한 list 가져오기 -->
+ 	<ul class="viewcard_total">
 <c:forEach items="${list}" var="bag">
-	<ul class="viewcard_total">
-		<li class="viewcard">
+ 		<li class="viewcard">
 			<div class="thumbnail1">
 				<img class="thumbnail2" src="../resources/upload/diary/${bag.diary_img}" onerror="this.src='../resources/img/mulucklogo.jpg'" alt="썸네일사진">
 			</div>
@@ -29,5 +28,5 @@
 				<p class="viewcard_date">${bag.diary_date}</p>
 			</div>
 		</li>
-	</ul>
 </c:forEach>
+	</ul>
