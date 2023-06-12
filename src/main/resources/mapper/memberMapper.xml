@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- insert, delete, update는 무조건 resultType="int"이므로
+		 프로그래머가 써주지 않아도 이미 resultType="int"가 있는 것으로 본다. -->
+		 
+	<insert id="create" parameterType="memberVO">
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, null)
+	</insert>
+	
+	<delete id="del"  parameterType="String">
+		delete from member where member_no = #{member_no}
+	</delete>
+	
+	<select id="one" parameterType="String" resultType="memberVO">
+		select *
+		from member
+		where member_no = #{member_no}
+	</select>
+	
+	<update id="up"  parameterType="memberVO">
+		update member set member_pw = #{member_pw}, member_email = #{member_email}, 
+		member_name = #{member_name}, member_tel = #{member_tel}, member_nickname = #{member_nickname}, 
+		member_img = #{member_img}, member_gender = #{member_gender}, member_birthyear = #{member_birthyear}, member_manager = #{member_manager} 
+		where member_no = #{member_no}
+	</update>
+	
+			<!-- 입력값이 없어서 parameterType 안써줌! -->
+	<select id="all" resultType="memberVO">
+		select * from member
+	</select>
+	
+	<!-- 이메일 중복체크 -->
+	<select id="emailCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_email = #{member_email}
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_id = #{member_id}
+	</select>
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="nicknameCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_nickname = #{member_nickname}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from member where member_id = #{member_id} AND member_pw = #{member_pw}
+	</select>
+	
+	<!-- 네이버 회원가입 -->
+	<insert id="createN" parameterType="memberVO">
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, #{member_img}, #{member_gender}, #{member_birthyear}, null)
+	</insert>
+	
+	<!-- 네이버 로그인 -->
+	<select id="naverLogin" parameterType="String" resultType="memberVO">
+		select * from member where member_id = #{member_id}
+	</select>
+
+	<!-- id 아이디 찾기 -->
+	<select id="idFind" parameterType="MemberVO" resultType="String">
+		select member_id from member where member_name = #{member_name} AND member_tel = #{member_tel}
+	</select>
+	
+	<!-- pw 패스워드 변경 -->
+	<update id="pwFind"  parameterType="memberVO">
+		update member set member_pw = #{member_pw} 
+		where member_id = #{member_id} AND member_tel = #{member_tel}
+	</update>
+	
+	<!-- 회원정보 가져오기 -->
+	<select id="memberInfo" parameterType="int" resultType="memberVO">
+		select * from member where member_no = #{member_no}
+	</select>
+	
+	<!-- 프로필 이미지, 닉네임, 성별, 연령대 변경 -->
+	<update id="profile"  parameterType="memberVO">
+		update member set member_nickname = #{member_nickname}, member_img = #{member_img}, member_gender = #{member_gender}, member_birthyear = #{member_birthyear}
+		where member_no = #{member_no}
+	</update>
+	
+	<!-- 이메일, pw, 이름, 전화번호 변경 -->
+	<update id="revise_up" parameterType="memberVO">
+	    <if test="member_pw != null">
+	        update member set member_email = #{member_email}, member_pw = #{member_pw}, member_name = #{member_name}, member_tel = #{member_tel}
+	    </if>
+	    <if test="member_pw == null">
+	        update member set member_email = #{member_email}, member_name = #{member_name}, member_tel = #{member_tel}
+	    </if>
+	    where member_no = #{member_no}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="drop"  parameterType="int">
+		delete from member where member_no = #{member_no}
+	</delete>
+	
+	<!-- 전화번호 중복체크 -->
+	<select id="telCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_tel = #{member_tel}
+	</select>
+	
+	<!-- 카카오 회원가입 -->
+	<insert id="createK" parameterType="memberVO">
+		insert into member(member_no, member_id, member_pw, member_email, member_name, member_tel, member_nickname, member_img , member_gender, member_birthyear, member_manager)
+			values(null, #{member_id}, null, #{member_email}, default, default, #{member_nickname}, #{member_img}, #{member_gender}, null, null)
+	</insert>
+	
+	<!-- 카카오 로그인 -->
+	<select id="kakaoLogin" parameterType="String" resultType="memberVO">
+		select * from member where member_email=#{member_email}
+	</select>
+	
+	<!-- 게시글 갯수 -->
+	<select id="count_post" parameterType="int" resultType="int">
+		select COUNT(*) from bbs where member_no = #{no}
+	</select>
+	
+	<!-- 내가쓴 댓글 갯수 -->
+	<select id="count_reply" parameterType="int" resultType="int">
+		select COUNT(*) from reply where member_no = #{no}
+	</select>
+	
+	<!-- 북마크 갯수 -->
+	<select id="count_bookmark" parameterType="int" resultType="int">
+		select COUNT(*) from bookmark where member_no = #{no}
+	</select>
+	
+	<!-- 받은 좋아요 수 -->
+	<select id="count_get_heart" parameterType="int" resultType="int">
+		SELECT COUNT(*) AS heart_count FROM heart WHERE bbs_no IN (
+		  SELECT bbs_no FROM bbs WHERE member_no = #{no}
+		)
+	</select>
+	
+	<!-- 게시글 리스트 -->
+	<select id="postList" parameterType="int" resultType="memberPostVO">
+		SELECT
+			ROW_NUMBER() OVER (ORDER BY bbs_no) AS post_no,
+			bbs.bbs_no,
+			bbs.bbs_title,
+			(SELECT COUNT(*) FROM heart WHERE heart.bbs_no = bbs.bbs_no) AS heart_count,
+			(SELECT COUNT(*) FROM reply WHERE reply.bbs_no = bbs.bbs_no) AS reply_count
+		FROM bbs WHERE bbs.member_no = #{no}
+	</select>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="del_bbs"  parameterType="int">
+		delete from bbs where bbs_no = #{bbs_No}
+	</delete>
+	
+	<!-- 댓글 리스트 -->
+	<select id="replyList" parameterType="int" resultType="memberReplyVO">
+		SELECT ROW_NUMBER() OVER () AS my_no, b.bbs_title, r.reply_content, r.reply_no, r.bbs_no
+			FROM reply r
+			JOIN bbs b ON r.bbs_no = b.bbs_no
+			WHERE r.member_no = #{no}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="del_reply"  parameterType="int">
+		delete from reply where reply_no = #{reply_No}
+	</delete>
+	
+	<!-- 북마크 리스트 -->
+	<select id="bookmarkList" parameterType="int" resultType="memberBookmarkVO">
+		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bbs.bbs_title, community.community_category
+		FROM bookmark
+		JOIN bbs ON bookmark.bbs_no = bbs.bbs_no
+		JOIN community ON bbs.community_no = community.community_no
+		WHERE bookmark.member_no = #{no}
+	</select>
+	
+	<!-- 북마크 삭제 -->
+	<delete id="del_bookmark"  parameterType="int">
+		delete from bookmark where bookmark_no = #{bookmark_No}
+	</delete>
+	
+	<!-- follower 수 (나를 팔로우 한 사람) -->
+	<select id="count_follower" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM follow WHERE following_user = #{no}
+	</select>
+	
+	<!-- following 수 (내가 팔로우 한 사람) -->
+	<select id="count_following" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM follow WHERE follower_user = #{no}
+	</select>
+	
+	<!-- follower 목록 -->
+	<select id="followerList" parameterType="int" resultType="memberFollowVO">
+		SELECT f.follow_no, f.following_user, f.follower_user, m.member_img, m.member_nickname, m.member_id
+		FROM follow f
+		JOIN member m ON f.follower_user = m.member_no
+		WHERE f.following_user = #{no}
+	</select>
+	
+	<!-- following 목록 -->
+	<select id="followingList" parameterType="int" resultType="memberFollowVO">
+		SELECT f.follow_no, f.following_user, f.follower_user, m.member_img, m.member_nickname, m.member_id
+		FROM follow f
+		JOIN member m ON f.following_user = m.member_no
+		WHERE f.follower_user = #{no}
+	</select>
+	
+	<!-- follower 삭제 -->
+	<delete id="del_follower"  parameterType="int">
+		delete from follow where follow_no = #{follow_No}
+	</delete>
+	
+	<!-- following 삭제 -->
+	<delete id="del_following"  parameterType="int">
+		delete from follow where follow_no = #{follow_No}
+	</delete>
+	
+	
+	
+	
+	
+	
+</mapper>

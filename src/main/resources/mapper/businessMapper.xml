@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="business">
+
+	<insert id="create" parameterType="businessVO">
+		insert into business (business_title,
+		business_date, business_write, business_image , business_place, member_no, business_share)
+		values
+		(#{business_title}, SYSDATE(), #{business_write},
+		#{business_image},#{business_place},#{member_no},#{business_share})
+	</insert>
+
+
+	<select id="one" parameterType="businessVO"
+		resultType="businessVO">
+		select b.* , m.member_nickname from business b join `member` m on b.member_no = m.member_no where business_no = #{business_no}
+	</select>
+	
+
+	<select id="all" resultType="businessVO" parameterType="pageVO">
+	select b.* , m.member_nickname from business b join `member` m on b.member_no = m.member_no where b.business_share =1 limit #{start}, #{end}
+	</select>
+	
+	<select id="all2" resultType="businessVO" parameterType="pageVO">
+		select b.* , m.member_nickname from business b join `member` m on b.member_no = m.member_no where b.business_share = 0 limit #{start}, #{end}
+	</select>
+
+	<select id="list" resultType="businessVO">
+		select * from business b order by
+		business_date desc limit 5,6
+	</select>
+
+
+	<select id="list2" resultType="businessVO"
+		parameterType="pageVO">
+		select *
+		from (
+		select ROW_NUMBER() over(order by business_date
+		desc) as b_no1, b.*
+		from business b) business2
+		where business2.business_no
+		between #{start} and #{end}
+	</select>
+
+	<select id="count" resultType="Integer">
+		select count(*) from business
+		where business_share = 1
+	</select>
+
+	<select id="count1" resultType="Integer">
+		select count(*) from business
+		where business_share = 0
+	</select>
+
+
+
+
+</mapper>

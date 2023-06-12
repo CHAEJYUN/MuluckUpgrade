@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="calendar">
+	<!-- insert, delete, update는 무조건 resultType="int"이므로
+	     프로그래머가 써주지 않아도 이미 resultType="int"가 
+	     있는 것으로 본다.!
+	 -->
+	<insert id="create" parameterType="calendarVO" useGeneratedKeys="true" keyProperty="calendar_id" >
+		insert into calendar(calendar_start, calendar_end, calendar_title) 
+		values (#{calendar_start}, #{calendar_end}, #{calendar_title}) 
+	</insert>
+	
+	<delete id="del"  parameterType="calendarVO">
+		delete from calendar 
+		where calendar_id = #{calendar_id}
+	</delete>
+	
+	<update id="up" parameterType="calendarVO">
+  	update calendar 
+  	set calendar_start = #{calendar_start}, calendar_end = #{calendar_end}, calendar_title = #{calendar_title}
+	where calendar_id = #{calendar_id}
+	</update>
+
+	
+	<select id="all"  resultType="calendarVO">
+		 select * from calendar 
+	
+	</select>
+	
+			<!--  select는 resultType을 써줘야 한다!
+			select 많은 값이 요청되는 경우  resultType="calendarVO"가
+	     	알아서 ArrayList도 실행 시켜 준다.!
+	 -->
+
+</mapper>

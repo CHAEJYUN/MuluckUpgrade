@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- 팔로우 -->
+	<insert id="follow" parameterType="followVO">
+		insert into follow(follower_user, following_user, follow_date)
+		values(#{follower_user}, #{following_user}, now())
+	</insert>
+	
+	<!-- 언팔로우 -->
+	<delete id="unfollow" parameterType="followVO">
+		delete 
+		from follow
+		where follower_user = #{follower_user} and following_user = #{following_user}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

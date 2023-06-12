@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+	background-color: #f2f1df;
+	color: #000;
+	font-family: 'KOTRAHOPE';
+}
+
+button {
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+	width: 400px;
+	height: 50px;
+	padding: 5px;
+	border-style: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	background-color: #145f37;
+	color: #fff;
+}
+
+button:hover {
+	text-decoration: underline;
+}
+
+#main_contents {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	margin-top: 100px;
+}
+
+#main_contents .wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	max-width: 600px;
+	padding-bottom: 50px;
+}
+
+.result h1 {
+	font-size: 60px;
+	font-family: 'KOTRAHOPE';
+}
+
+.result h3 {
+	font-size: 25px;
+	padding-bottom: 15px;
+}
+
+.result_img {
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.result_img2 {
+	width: 400px;
+	height: 250px;
+}
+
+.result_img2 img{
+	width: 100%;
+	height: 100%;
+}
+
+.result_img img{
+	width: 100%;
+	height: 100%;
+}
+
+.result_explains .explain {
+	width: 400px;
+	margin-bottom: 30px;
+}
+
+.result_explains .title {
+	font-family: 'KOTRAHOPE';
+	font-size: 25px;
+	text-align: center;
+	border-top: 3px solid #145f37;
+	border-bottom: 3px solid #145f37;
+	padding: 10px 0;
+	margin-bottom: 20px; 
+}
+
+.result_explains ul {
+	padding: 0 20px;
+	list-style-type: disc;
+}
+
+.result_explains li {
+	padding-bottom: 15px;
+	font-size: 20px;
+}
+
+.share {
+	padding-bottom: 20px;
+	margin-bottom: 50px; 
+	border-bottom: 3px solid #145f37;
+}
+
+.share button {
+	margin-bottom: 30px; 
+}
+
+.facebook_share {
+	background-color: #3B5998;
+	color: #fff;
+}
+
+.kakao_share {
+	background-color: #f1d900;
+}
+
+.buttons {
+	padding-bottom: 50px;
+}
+
+.buttons h3 {
+	padding-bottom: 20px;
+}
+
+.buttons button {
+	padding-bottom: 30px;
+}
+
+.color {
+	background-color: #145f37;
+	color: #fff;
+}
+
+.muluck {
+	display: flex;
+	justify-content: column;
+	align-items: center;
+}
+
+.muluck a {
+	width: 100px;
+}
+
+.muluck img {
+	width: 100%;
+	height: auto;
+}
+
+/* 모달 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+#modal-close-btn {
+  margin-top: 10px;
+}
