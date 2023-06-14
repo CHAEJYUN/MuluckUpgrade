@@ -10,7 +10,7 @@
 <body>
 <c:forEach items="${list}" var="bag">
 ${member_nickname} : ${bag.reply_content}  
-	<button class="del_button"><img src="../resources/assets/img/delete.png"></button><br>
+	<button id="r_del_btn"><img src="../resources/assets/img/delete.png"></button><br>
 </c:forEach>
 </body>
 </html>
