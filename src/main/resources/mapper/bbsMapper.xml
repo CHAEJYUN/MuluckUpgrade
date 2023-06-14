@@ -104,7 +104,7 @@
 	<delete id="reply_delete" parameterType="replyVO">
 		delete 
 		from reply 
-		where bbs_no = #{bbs_no} and member_no = #{member_no}
+		where reply_no = #{reply_no}
 	</delete>
 	
 	<!-- 좋아요 -->	
