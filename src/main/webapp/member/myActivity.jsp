@@ -129,6 +129,11 @@
 					style="text-decoration: none; font-weight: 500; font-size: 25px;">
 					팔로우 </a>
 			</div>
+			<div class="menu_list">
+				<a class="menu" href="${pageContext.request.contextPath}/member/myInquiry.jsp"
+					style="text-decoration: none; font-weight: 500; font-size: 25px;">
+					문의하기 </a>
+			</div>
 		</div>
 		<div id="my_screen" style="flex: 8; display: flex; flex-direction: row;">
 			<div class="borderline" style="flex: 1; flex-basis: 100px; margin-right: 10px; text-align: center;">
