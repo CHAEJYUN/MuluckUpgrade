@@ -43,7 +43,7 @@ div {
 <%@ include file="../nav_header.jsp"%>
 	<!-- 화면 좌측 -->
 	<!-- 카테고리 -->
-	<div id="category_list">
+	<div id ="category_all">
 	<div class="category_list">
 		<a class="category" href="../community/community.jsp" style="text-decoration: none">
 		<font size="5">무우럭</font></a>
