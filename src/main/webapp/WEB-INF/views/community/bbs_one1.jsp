@@ -46,8 +46,9 @@ $(function() {
 		$.ajax({
 			url : "rr",
 			data : {
-				bbs_no : ${bag.bbs_no},
+				/* reply_no : reply_no, */
 				reply_content : reply_content,
+				bbs_no : ${bag.bbs_no},
 				member_no : ${member_no}, //세션
 			},
 			success : function() {
@@ -57,6 +58,18 @@ $(function() {
 			}
 		})
 	}) //b1
+ 	//댓글 삭제
+	$('#r_del_btn').click(function() {
+		$.ajax({
+			url : "rr_delete",
+			data : {
+				reply_no : reply_no,
+			},
+			success : function() {
+				alert('댓글 삭제 완료')
+			}
+		})
+	}) //r_del_btn 
 	/* 좋아요 */
 	$('#heart').click(function() {
 		//bbs_no값 넘어갔는지 //alert(${bag.bbs_no}+ "----------")
