@@ -62,7 +62,17 @@
 		</div>
 	</div>
 	<div class="borderline" id="my_screen" style="flex: 8; margin-top: 10px; margin-right: 10px;">
-		<div></div>
+		<form action="">
+			<input name="member_no" value=${member_no} type="hidden"/>
+			<div style="display: flex; flex-direction: row; margin-top: 40px; margin-bottom: 10px;">
+				<span style="flex: 3;">문의 제목:</span> 
+				<input style="flex: 7; margin-right: 20%;" id="inquiry_title" name="inquiry_title" type="text" placeholder=" 15글자 이내의 타이틀" maxlength="15";>
+			</div>
+			<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
+				<span style="flex: 3;">문의 내용:</span> 
+				<input style="flex: 7; margin-right: 20%; height: 300px;" id="inquiry_content" name="inquiry_content" type="text" placeholder=" 문의내용을 300글자 내외로 입력하세요.">
+			</div>
+		</form>
 	</div>
 </div>
 </body>
