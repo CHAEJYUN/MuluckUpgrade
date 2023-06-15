@@ -17,6 +17,7 @@
 		<typeAlias type="com.multi.muluckup.member.MemberReplyVO" alias="memberReplyVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.MemberBookmarkVO" alias="memberBookmarkVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.MemberFollowVO" alias="memberFollowVO"></typeAlias>
+		<typeAlias type="com.multi.muluckup.member.InquiryVO" alias="inquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.card.CardVO" alias="cardVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.calendarVO" alias="calendarVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.diaryVO" alias="diaryVO"></typeAlias>
@@ -25,7 +26,7 @@
 	</typeAliases>
 	<mappers>
 		<!-- SQL문 정의하는 파일들의 목록을 지정 -->
-		<mapper resource="mapper/bbsMapper.xml" />
+		<mapper resource="mapper/bbsMapper.xml"/>
 		<mapper resource="mapper/followMapper.xml" />
 		<mapper resource="mapper/memberMapper.xml" />
 		<mapper resource="mapper/cardMapper.xml" />

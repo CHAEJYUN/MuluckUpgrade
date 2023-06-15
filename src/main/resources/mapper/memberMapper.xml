@@ -8,6 +8,7 @@
 		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, null)
 	</insert>
 	
+<!-- 	
 	<delete id="del"  parameterType="String">
 		delete from member where member_no = #{member_no}
 	</delete>
@@ -25,10 +26,11 @@
 		where member_no = #{member_no}
 	</update>
 	
-			<!-- 입력값이 없어서 parameterType 안써줌! -->
+			입력값이 없어서 parameterType 안써줌!
 	<select id="all" resultType="memberVO">
 		select * from member
 	</select>
+-->
 	
 	<!-- 이메일 중복체크 -->
 	<select id="emailCheck" parameterType="String" resultType="int">
@@ -214,10 +216,6 @@
 	<delete id="del_following"  parameterType="int">
 		delete from follow where follow_no = #{follow_No}
 	</delete>
-	
-	
-	
-	
-	
+
 	
 </mapper>
