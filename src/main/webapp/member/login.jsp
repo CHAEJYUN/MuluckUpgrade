@@ -70,7 +70,7 @@ $(function() {
 				}
 			},
 			error: function() {
-				$("#loginResult").html("서버 에러가 발생하였습니다.").css('color', 'red');
+				$("#loginResult").html("에러가 발생하였습니다.").css('color', 'red');
 			}
 		});
 	});

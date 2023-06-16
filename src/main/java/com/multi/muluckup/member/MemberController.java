@@ -77,7 +77,7 @@ public class MemberController {
 	@RequestMapping(value = "member/login", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean login(MemberVO bag, HttpSession session) {
-		System.out.println(bag);
+		//System.out.println(bag);
 		MemberVO result = dao.login(bag);
 		System.out.println("result : "+result);
 		if(result != null) {
@@ -360,7 +360,7 @@ public class MemberController {
 	 @PostMapping("member/my_bookmark")
 	 public void my_bookmark(@RequestParam("member_no") String member_no, Model model) {
 		 List<MemberBookmarkVO> bookmarkList = dao.bookmarkList(member_no);
-		 System.out.println("사이즈: " + bookmarkList.size()); //사이즈를 찍어보세요.
+		 //System.out.println("사이즈: " + bookmarkList.size()); //사이즈를 찍어보세요.
 		 model.addAttribute("bookmarkList", bookmarkList);
 	 }
 	 
