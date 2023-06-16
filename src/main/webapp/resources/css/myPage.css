@@ -130,3 +130,12 @@ td > a {
     white-space: pre-line; overflow-y: scroll; margin: 0 auto 10px;
     font-size: 9px;
 }
+
+.nullCheck {
+	height: auto;
+	margin-left: 5px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+}
