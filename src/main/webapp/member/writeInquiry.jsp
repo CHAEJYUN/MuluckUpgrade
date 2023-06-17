@@ -26,6 +26,55 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../resources/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script type="text/javascript">
+$(function() {
+	//inquiry_title비어있을때 알림
+	$('#inquiry_title').blur(function() {
+		const title = $('#inquiry_title').val();
+		if(title !== '') {
+			$("#titleResult").html("");
+		}else{
+			$("#titleResult").html("제목을 입력해주세요.");
+		}
+	})//titleResult
+	
+	//inquiry_content비어있을때 알림
+	$('#inquiry_content').blur(function() {
+		const content = $('#inquiry_content').val();
+		if(content !== '') {
+			$("#contentResult").html("");
+		}else{
+			$("#contentResult").html("내용을 입력해주세요.");
+		}
+	})//titleResult
+
+	function submitForm() {
+		const title = $('#inquiry_title').val();
+		const content = $('#inquiry_content').val();
+		const member_no = '${member_no}';
+		
+		 $.ajax({
+		      url: "writeInquiry",
+		      method: "POST",
+		      data: {
+		    	member_no: member_no,
+		    	inquiry_title: title,
+		    	inquiry_content: content
+		      },
+		      success: function(x) {
+		        
+		      },
+		      error: function(xhr, status, error) {
+		        console.log(error);
+		        // 요청 실패 시 처리할 로직
+		      }
+		    });
+		
+		
+	}
+	
+})//function
+</script>
 </head>
 <body>
 <!-- 네비게이션바 header -->
@@ -61,18 +110,28 @@
 				문의하기 </a>
 		</div>
 	</div>
-	<div class="borderline" id="my_screen" style="flex: 8; margin-top: 10px; margin-right: 10px;">
-		<form action="">
-			<input name="member_no" value=${member_no} type="hidden"/>
-			<div style="display: flex; flex-direction: row; margin-top: 40px; margin-bottom: 10px;">
-				<span style="flex: 3;">문의 제목:</span> 
-				<input style="flex: 7; margin-right: 20%;" id="inquiry_title" name="inquiry_title" type="text" placeholder=" 15글자 이내의 타이틀" maxlength="15";>
-			</div>
-			<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
-				<span style="flex: 3;">문의 내용:</span> 
-				<input style="flex: 7; margin-right: 20%; height: 300px;" id="inquiry_content" name="inquiry_content" type="text" placeholder=" 문의내용을 300글자 내외로 입력하세요.">
-			</div>
-		</form>
+	<div class="borderline" id="my_screen" style="flex: 8; display: flex; flex-direction: column; margin-top: 10px; margin-right: 10px;">
+		<div style="flex: 1; max-height: 30px;  margin-left: 5%; margin-top: 20px; margin-bottom: 20px;"">
+			<a href="myInquiry.jsp"><button style="float: left;">이전</button></a>
+		</div>
+		<div style="flex: 9; margin-top: 20px;">
+			<form onsubmit="return false;">
+				<input name="member_no" value=${member_no} type="hidden"/>
+				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
+					<span style="flex: 3;">문의 제목:</span> 
+					<input id="inquiry_title" style="flex: 7; margin-right: 20%;" name="inquiry_title" type="text" placeholder=" 15글자 이내의 타이틀" maxlength="15";>
+				</div>
+				<div id="titleResult" class="nullCheck"></div>
+				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
+					<span style="flex: 3;">문의 내용:</span> 
+					<input id="inquiry_content" name="inquiry_content" style="flex: 7; margin-right: 20%; height: 300px;" type="text" placeholder=" 문의내용을 300글자 내외로 입력하세요.">
+				</div>
+				<div id="contentResult" class="nullCheck"></div>
+				<div style="margin-top: 20px; margin-bottom: 30px;">
+					<button type="submit" onclick="submitForm()">작성 완료</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
 </body>

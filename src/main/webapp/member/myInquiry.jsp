@@ -61,8 +61,12 @@
 				문의하기 </a>
 		</div>
 	</div>
-	<div class="borderline" id="my_screen" style="flex: 8; margin-top: 10px; margin-right: 10px;">
-		<div></div>
+	<div class="borderline" id="my_screen" style="flex: 8; display: flex; flex-direction: column; margin-top: 10px; margin-right: 10px;">
+		<div style="margin-top: 20px;"><span style="font-size: 35px; font-weight: bolder;">문의 목록</span></div>
+		<div style="flex: 2; max-height: 30px;  margin-right: 5%; margin-top: 15px; margin-bottom: 20px;"">
+			<a href="writeInquiry.jsp"><button style="float: right;">문의하기</button></a>
+		</div>
+		<div style="flex: 8;"></div>
 	</div>
 </div>
 </body>
