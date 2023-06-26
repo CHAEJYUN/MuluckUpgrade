@@ -92,14 +92,12 @@
 		insert into reply values
 		(null, #{reply_content}, #{bbs_no}, #{member_no})
 	</insert>
-
     <!-- 댓글 목록 -->
 	<select id="reply_all" resultType="replyVO" parameterType="int">
 		select *
 		from reply
 		where bbs_no = #{bbs_no}
 	</select>
-
 	<!-- 댓글 삭제 -->
 	<delete id="reply_delete" parameterType="replyVO">
 		delete 
