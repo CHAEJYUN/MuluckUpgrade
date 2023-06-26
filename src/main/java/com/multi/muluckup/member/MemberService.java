@@ -44,7 +44,7 @@ public class MemberService {
 	
 	//카카오 로그인
 	@Autowired
-	private MemberDAO dao;
+	MemberDAO dao;
 	
 	public String getAccessToken (String authorize_code) {
 		String access_Token = "";
@@ -65,7 +65,7 @@ public class MemberService {
 			sb.append("grant_type=authorization_code");
 			
 			sb.append("&client_id=30ebd1d9b39e44cffc3efc0e21f64df4"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8888/muluck/member/kakaoLogin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:8888/muluckup/member/kakaoLogin"); // 본인이 설정한 주소
 			
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
@@ -87,8 +87,10 @@ public class MemberService {
 			System.out.println("response body : " + result);
 			
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
+//			JsonParser parser = new JsonParser();
+//			JsonElement element = parser.parse(result);
+			//위애애들 노란불 떠서 아래로 만듦
+			JsonElement element = JsonParser.parseString(result);
             
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
@@ -131,8 +133,11 @@ public class MemberService {
 			}
 			System.out.println("response body : " + result);
 			
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
+//			JsonParser parser = new JsonParser();
+//			JsonElement element = parser.parse(result);
+			//위애애들 노란불 떠서 아래로 만듦
+			JsonElement element = JsonParser.parseString(result);
+
 			
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();

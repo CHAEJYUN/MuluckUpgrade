@@ -19,6 +19,8 @@ vo.setBusiness_share(bShare);
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/business.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon"
+	href="../resources/assets/favicon.ico" />
 <!-- jquery  -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -154,8 +156,5 @@ vo.setBusiness_share(bShare);
 		</form>
 
 	</div>
-</body>
-</html>
-
 </body>
 </html>

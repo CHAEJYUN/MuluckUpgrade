@@ -268,5 +268,11 @@ public class MemberDAO {
 		my.delete("member.del_following", follow_No);
 	}
 	
+	// 문의글 쓰기
+	public int inquiry_write(InquiryVO bag) {
+		int result = my.insert("member.inquiry_write", bag);
+		return result;
+	}
+	
 	
 }

@@ -1,7 +1,6 @@
 package com.multi.muluckup.community;
 
 import java.io.File;
-import java.text.Normalizer;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -68,7 +67,7 @@ public class BbsController {
 			dao.bbs_insert1(bbsVO);
 			//세션 값 가져오기
 			HttpSession session = request.getSession();
-			int member_no = (int) session.getAttribute("member_no");
+			int member_no = (Integer)session.getAttribute("member_no");
 			System.out.println("세션 값 : "+ member_no);
 	}
 	@RequestMapping("community/bbs_insert_ok2")
@@ -88,7 +87,7 @@ public class BbsController {
 			dao.bbs_insert2(bbsVO);
 			//세션 값 가져오기
 			HttpSession session = request.getSession();
-			int member_no = (int) session.getAttribute("member_no");
+			int member_no = (Integer)session.getAttribute("member_no");
 			System.out.println("세션 값 : "+ member_no);
 	}
 	@RequestMapping("community/bbs_insert_ok3")
@@ -108,7 +107,7 @@ public class BbsController {
 			dao.bbs_insert3(bbsVO);
 			//세션 값 가져오기
 			HttpSession session = request.getSession();
-			int member_no = (int) session.getAttribute("member_no");
+			int member_no = (Integer)session.getAttribute("member_no");
 			System.out.println("세션 값 : "+ member_no);
 	}
 
@@ -186,7 +185,7 @@ public class BbsController {
 		dao.reply_insert(bag);
 		// 세션 값 가져오기
 		HttpSession session = request.getSession();
-		int member_no = (int) session.getAttribute("member_no");
+		int member_no = (Integer)session.getAttribute("member_no");
 		System.out.println("세션 값 : " + member_no);
 	}
 	// 댓글 목록
