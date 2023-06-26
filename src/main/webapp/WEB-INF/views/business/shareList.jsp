@@ -33,6 +33,8 @@ td {
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/business.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon"
+	href="../resources/assets/favicon.ico" />
 <!-- jquery  -->
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
 <!-- 토글 - 드롭다운 -->
@@ -59,7 +61,7 @@ td {
 			<h3 style="font-family: 'KOTRAHOPE'; font-size:50px">나눔 게시글 : ${count}</h3>
 			<hr color="green">
 			<%
-				int pages = (int) request.getAttribute("pages");
+				int pages = (Integer)request.getAttribute("pages");
 			for (int p = 1; p <= pages; p++) {
 			%>
 			<button style="background: #eaf2df; color: #145f37; width: 50px;"

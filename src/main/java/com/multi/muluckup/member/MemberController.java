@@ -414,5 +414,19 @@ public class MemberController {
 		dao.del_following(follow_no);
 		return "forward:/member/myFollow.jsp";
 	}
+	
+	// 문의글 쓰기
+	@RequestMapping("member/inquiry_write")
+	@ResponseBody
+	public boolean inquiry_write(InquiryVO bag) {
+		System.out.println("문의글 보내기");
+		int result = dao.inquiry_write(bag);
+		if (result != 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	 
 }

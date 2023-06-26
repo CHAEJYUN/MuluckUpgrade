@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>나눔</title>
+<link rel="icon" type="image/x-icon"
+	href="../resources/assets/favicon.ico" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 	
@@ -58,7 +60,7 @@ td {
 			<h3 style="font-family: 'KOTRAHOPE'; font-size:50px">거래 게시글 : ${count1}</h3>
 			<hr color="green">
 			<%
-				int pages = (int) request.getAttribute("pages");
+				int pages = (Integer)request.getAttribute("pages");
 			for (int p = 1; p <= pages; p++) {
 			%>
 			<button style="background: #eaf2df; color: #145f37; width: 50px;"

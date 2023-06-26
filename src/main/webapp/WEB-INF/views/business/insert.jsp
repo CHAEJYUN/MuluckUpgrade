@@ -12,6 +12,8 @@
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/business.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon"
+	href="../resources/assets/favicon.ico" />
 <!-- jquery  -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -37,8 +39,5 @@
 				<button class="btn btn-primary" onclick="location.href='../business/business_main.jsp';">완료</button>
 		</div>
 	</div>
-</body>
-</html>
-
 </body>
 </html>

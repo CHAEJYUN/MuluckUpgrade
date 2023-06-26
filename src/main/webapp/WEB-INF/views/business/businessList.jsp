@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>나눔</title>
+<link rel="icon" type="image/x-icon"
+	href="../resources/assets/favicon.ico" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	function logout() {

@@ -225,7 +225,7 @@ div {
 	  <!-- 세션(본인만 수정/삭제 가능) -->
 	  <% 
 	  	 if(session.getAttribute("member_no") != null){
-	  	 int member_no_s = (int) session.getAttribute("member_no");
+	  	 int member_no_s = (Integer)session.getAttribute("member_no");
 	 	 BbsVO bag = (BbsVO)request.getAttribute("bag");
 	     int member_no = bag.getMember_no();
 	     if(member_no_s == member_no) { %>

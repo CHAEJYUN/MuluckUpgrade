@@ -5,7 +5,7 @@
 		 프로그래머가 써주지 않아도 이미 resultType="int"가 있는 것으로 본다. -->
 		 
 	<insert id="create" parameterType="memberVO">
-		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, null)
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, default)
 	</insert>
 	
 <!-- 	
@@ -54,7 +54,7 @@
 	
 	<!-- 네이버 회원가입 -->
 	<insert id="createN" parameterType="memberVO">
-		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, #{member_img}, #{member_gender}, #{member_birthyear}, null)
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, #{member_img}, #{member_gender}, #{member_birthyear}, default)
 	</insert>
 	
 	<!-- 네이버 로그인 -->
@@ -108,7 +108,7 @@
 	<!-- 카카오 회원가입 -->
 	<insert id="createK" parameterType="memberVO">
 		insert into member(member_no, member_id, member_pw, member_email, member_name, member_tel, member_nickname, member_img , member_gender, member_birthyear, member_manager)
-			values(null, #{member_id}, null, #{member_email}, default, default, #{member_nickname}, #{member_img}, #{member_gender}, null, null)
+			values(null, #{member_id}, null, #{member_email}, default, default, #{member_nickname}, #{member_img}, #{member_gender}, null, default)
 	</insert>
 	
 	<!-- 카카오 로그인 -->
@@ -216,6 +216,11 @@
 	<delete id="del_following"  parameterType="int">
 		delete from follow where follow_no = #{follow_No}
 	</delete>
+	
+	<!-- 문의글 쓰기 -->
+	<insert id="inquiry_write" parameterType="inquiryVO">
+		insert into inquiry values (null, #{inquiry_writer}, #{inquiry_title}, #{inquiry_content}, now(), now(), null, null, null)
+	</insert>
 
 	
 </mapper>

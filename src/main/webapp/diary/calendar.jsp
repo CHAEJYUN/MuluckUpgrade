@@ -335,7 +335,7 @@ font-family: 'KOTRAHOPE';
 	
 	
 	<center><div id='calendar'
-		style="width: 80%; background-color: #F2F1DF; place-content: center; text-align: center; font-family: KOTRAHOPE; font-size: 20px;"></div><center> <!-- <center>사용해서 중앙으로 이동 -->
+		style="width: 80%; background-color: #F2F1DF; place-content: center; text-align: center; font-family: KOTRAHOPE; font-size: 20px;"></div></center> <!-- <center>사용해서 중앙으로 이동 -->
 	<footer class="footer text-faded text-center py-5"
 		style="text-align: center;">
 		<div class="container">
