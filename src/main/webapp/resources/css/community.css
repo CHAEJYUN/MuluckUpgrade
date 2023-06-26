@@ -75,17 +75,19 @@ input {
 	margin-top: 50px;
 }
 
-#category_list {
+#category_all {
 	width: 250px;
 	height: 700px;
-	margin-top: 50px;
+	margin-top: 150px;
 	float: left;
 	/* background-color: blue; */
 	/* 카테고리 메뉴 고정 */
-	position: sticky;
-	position: -webkit-sticky;
-	top: -60px;
-	/* position: fixed; */
+	position: fixed; 
+  	left: 5%; 
+  	top: 180px; 
+  	margin-right: -720px;
+ 	text-align:center;
+  	width: 120px;
 }
 
 .category_list {

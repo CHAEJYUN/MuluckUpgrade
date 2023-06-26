@@ -9,6 +9,10 @@ public class BbsVO {
 	private int community_no;
 	private int member_no;
 	
+	//검색
+	private String type;
+	private String keyword;
+	
 	public int getBbs_no() {
 		return bbs_no;
 	}
@@ -45,11 +49,24 @@ public class BbsVO {
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	
 	@Override
 	public String toString() {
 		return "BbsVO [bbs_no=" + bbs_no + ", bbs_title=" + bbs_title + ", bbs_content=" + bbs_content + ", bbs_img="
-				+ bbs_img + ", community_no=" + community_no + ", member_no=" + member_no + "]";
+				+ bbs_img + ", community_no=" + community_no + ", member_no=" + member_no + ", type=" + type
+				+ ", keyword=" + keyword + "]";
 	}
-	
+
 }
