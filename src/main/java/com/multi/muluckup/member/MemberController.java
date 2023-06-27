@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 
 
@@ -385,21 +384,21 @@ public class MemberController {
 	  return result;
 	}
 	
-	 // follower 목록 가져오기
-	 @PostMapping("member/follower")
-	 public void follower(@RequestParam("member_no") String member_no, Model model) {
-		 List<MemberFollowVO> followerList = dao.followerList(member_no);
-		 //System.out.println("사이즈: " + followerList.size()); //사이즈를 찍어보세요.
-		 model.addAttribute("followerList", followerList);
-	 }
+	// follower 목록 가져오기
+	@PostMapping("member/follower")
+	public void follower(@RequestParam("member_no") String member_no, Model model) {
+		List<MemberFollowVO> followerList = dao.followerList(member_no);
+		//System.out.println("사이즈: " + followerList.size()); //사이즈를 찍어보세요.
+		model.addAttribute("followerList", followerList);
+	}
 	 
-	 // following 목록 가져오기
-	 @PostMapping("member/following")
-	 public void following(@RequestParam("member_no") String member_no, Model model) {
-		 List<MemberFollowVO> followingList = dao.followingList(member_no);
-		 //System.out.println("사이즈: " + followingList.size()); //사이즈를 찍어보세요.
-		 model.addAttribute("followingList", followingList);
-	 }
+	// following 목록 가져오기
+	@PostMapping("member/following")
+	public void following(@RequestParam("member_no") String member_no, Model model) {
+		List<MemberFollowVO> followingList = dao.followingList(member_no);
+		//System.out.println("사이즈: " + followingList.size()); //사이즈를 찍어보세요.
+		model.addAttribute("followingList", followingList);
+	}
 	 
 	// follower 삭제
 	@RequestMapping("member/del_follower")
@@ -421,12 +420,46 @@ public class MemberController {
 	public boolean inquiry_write(InquiryVO bag) {
 		System.out.println("문의글 보내기");
 		int result = dao.inquiry_write(bag);
-		if (result != 0) {
+		if(result != 0) {
 			return true;
 		}else {
 			return false;
 		}
 	}
 	
+	// 문의글 목록 가져오기
+	@PostMapping("member/my_inquiry")
+	public void my_inquiry(String inquiry_writer, Model model) {
+		 //System.out.println(inquiry_writer);
+		 List<MemberInquiryVO> inquiryList = dao.inquiryList(inquiry_writer);
+		 //System.out.println("사이즈: " + postList.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("inquiryList", inquiryList);
+	 }
+	 
+	//문의글 하나 가져오기
+	@RequestMapping("member/one_inquiry")
+	public void one_inquiry(int inquiry_no, Model model) {
+		//System.out.println(inquiry_no);
+		InquiryVO bag = dao.one_inquiry(inquiry_no);
+		model.addAttribute("bag", bag);
+	}
+	 
+	//manager 정보 가져오기
+	@RequestMapping("member/manager")
+	@ResponseBody
+	public MemberVO manager(@RequestParam("member_no") Integer inquiry_manager) {
+	 	int member_no = inquiry_manager;
+	 	//System.out.println("member_no: " + member_no);
+		MemberVO result = dao.manager(member_no);
+		System.out.println(result);
+		return result;
+	}
+	
+	//문의글 삭제
+	@RequestMapping("member/del_inquiry")
+	public String del_inquiry(int inquiry_no) {
+		dao.del_inquiry(inquiry_no);
+		return "forward:/member/myInquiry.jsp";
+	}
 	 
 }

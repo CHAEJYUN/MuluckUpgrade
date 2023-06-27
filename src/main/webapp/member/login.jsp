@@ -114,7 +114,7 @@ $(function() {
 
 				<!-- 카카오 로그인 버튼 노출 영역 -->
 				<a class="p-2"
-					href="https://kauth.kakao.com/oauth/authorize?client_id=30ebd1d9b39e44cffc3efc0e21f64df4&redirect_uri=http://localhost:8888/muluckup/member/kakaoLogin&response_type=code">
+					href="https://kauth.kakao.com/oauth/authorize?client_id=30ebd1d9b39e44cffc3efc0e21f64df4&redirect_uri=http://localhost:8888/muluck/member/kakaoLogin&response_type=code">
 					<!-- REST_API키 및 REDIRECT_URi는 본인걸로 수정하세요 --> <img
 					src="${pageContext.request.contextPath}/resources/upload/member/kakao_login.png"
 					style="height: 45px; width: 200px;">
@@ -122,7 +122,7 @@ $(function() {
 			</div>
 			<script type="text/javascript">
 				var naver_id_login = new naver_id_login("u4ZSMzPdnSJwhVD6Q0ZO",
-						"http://localhost:8888/muluckup/member/callback.jsp");
+						"http://localhost:8888/muluck/member/callback.jsp");
 				var state = naver_id_login.getUniqState();
 				naver_id_login.setButton("green", 3, 39);
 				naver_id_login.setDomain("http://localhost:8888/muluck/");

@@ -9,8 +9,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>나의문의</title>
-<link rel="icon" type="image/x-icon"
-	href="../resources/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
@@ -26,6 +25,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../resources/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script type="text/javascript">
+$(function() {
+	const member_no = ${member_no};
+	
+	//시작하자마자 게시글 버튼 눌려 있기
+	$.ajax({
+		url: "my_inquiry",
+		type: "POST", // POST 요청으로 설정
+	    data: {inquiry_writer : member_no}, // member_no 값을 데이터로 전송
+		success: function(result) {
+			$('#inquiry_result').append(result).css("font-size", "15px");
+		}//success
+	})//ajax
+})
+</script>
 </head>
 <body>
 <!-- 네비게이션바 header -->
@@ -63,10 +77,10 @@
 	</div>
 	<div class="borderline" id="my_screen" style="flex: 8; display: flex; flex-direction: column; margin-top: 10px; margin-right: 10px;">
 		<div style="margin-top: 20px;"><span style="font-size: 35px; font-weight: bolder;">문의 목록</span></div>
-		<div style="flex: 2; max-height: 30px;  margin-right: 5%; margin-top: 15px; margin-bottom: 20px;"">
+		<div style="flex: 2; max-height: 30px;  margin-right: 5%; margin-top: 15px; margin-bottom: 20px;">
 			<a href="writeInquiry.jsp"><button style="float: right;">문의하기</button></a>
 		</div>
-		<div style="flex: 8;"></div>
+		<div style="flex: 8;" id="inquiry_result"></div>
 	</div>
 </div>
 </body>

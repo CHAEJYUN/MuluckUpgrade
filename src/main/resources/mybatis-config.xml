@@ -18,6 +18,7 @@
 		<typeAlias type="com.multi.muluckup.member.MemberBookmarkVO" alias="memberBookmarkVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.MemberFollowVO" alias="memberFollowVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.InquiryVO" alias="inquiryVO"></typeAlias>
+		<typeAlias type="com.multi.muluckup.member.MemberInquiryVO" alias="memberinquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.card.CardVO" alias="cardVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.calendarVO" alias="calendarVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.diaryVO" alias="diaryVO"></typeAlias>

@@ -65,7 +65,7 @@ public class MemberService {
 			sb.append("grant_type=authorization_code");
 			
 			sb.append("&client_id=30ebd1d9b39e44cffc3efc0e21f64df4"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8888/muluckup/member/kakaoLogin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:8888/muluck/member/kakaoLogin"); // 본인이 설정한 주소
 			
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());

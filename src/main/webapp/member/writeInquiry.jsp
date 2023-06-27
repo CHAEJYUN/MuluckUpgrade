@@ -9,8 +9,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>문의작성</title>
-<link rel="icon" type="image/x-icon"
-	href="../resources/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
@@ -29,11 +28,10 @@
 <script type="text/javascript">
 	//유효성 검증 (초기값은 false로 설정)
 	let isValTitle = false;
-	let isValContent = false;
 	
-	// 모든 필드의 유효성 검증을 체크하고 회원가입 버튼을 활성화/비활성화
+	// 타이틀 필드의 유효성 검증을 체크하고 회원가입 버튼을 활성화/비활성화
 	function checkValidation() {
-		if (isValTitle && isValContent) {
+		if (isValTitle) {
 		  $('#inquiry_send').prop('disabled', false).css({'background-color': '#000000', 'color': '#ffffff'});
 		} else {
 		  $('#inquiry_send').prop('disabled', true).css({'background-color': '#f0f0f0', 'color': '#1010104d'});
@@ -71,11 +69,9 @@ $(function() {
 		const content = $('#inquiry_content').val();
 		if(content !== '') {
 			$("#result_content").html("");
-			isValContent = true;
 			checkValidation();
 		}else{
 			$("#result_content").html("내용을 입력해주세요.");
-			isValContent = false;
 			checkValidation();
 		}
 	})//result_content
@@ -83,14 +79,14 @@ $(function() {
 	
 	//유효성 검사후 버튼누르면 폼전송
 	$('#inquiry_send').click(function() {
-		if (isValTitle && isValContent) {
+		if (isValTitle) {
 			submitForm();
 		}
 	});
 	
 	function submitForm() {
 		const title = $('#inquiry_title').val();
-		const content = $('#inquiry_content').val();
+		const content = $('#inquiry_content').val().replace(/\n/g, "<br>"); // 개행 문자 \n을 <br> 태그로 변환
 		const member_no = '${member_no}'; //member_no가 inquiry_writer임
 		
 		 $.ajax({
@@ -102,14 +98,14 @@ $(function() {
 		    	inquiry_content: content
 		      },
 		      success: function(x) {
-	    	  	console.log('result>> ' + x)
-		        if(x === 'true'){ // 성공
-	        		window.location.href = "../member/myInquiry.jsp";
-		        }else { // 작성 실패
-		        	$('#inquiry_title').val('');
-		        	$('#inquiry_content').val('');
-		        	checkValidation();
-		        }
+		    	  if(x === true){
+	        		window.location.href = "${pageContext.request.contextPath}/member/myInquiry.jsp";
+		    	  }else{
+	                console.log('result>> 작성 실패');
+                    $('#inquiry_title').val('');
+                    $('#inquiry_content').val('');
+                    checkValidation();
+		    	  }
 		      },
 		      error: function(xhr, status, error) {
 		        console.log(error);
