@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="card">
+	<!-- insert, delete, update의 결과 타입은 무조건 resultType=”int” 이므로 프로그래머가 써주지 
+		않아도 이미 resultType=”int”가 있는 것으로 봄. -->
+
+	<!-- 반려식물 등록증 등록 -->
+	<insert id="insert" parameterType="cardVO">
+		insert into card(card_name,
+		card_species, card_birth, card_mmti, card_img) values (#{card_name},
+		#{card_species}, #{card_birth}, #{card_mmti}, #{card_img})
+	</insert>
+
+	<!-- 반려식물 등록증 삭제 -->
+	<delete id="del">
+		delete from card where card_no = #{card_no}
+	</delete>
+
+	<!-- 반려식물 등록증 수정 -->
+	<update id="update" parameterType="cardVO">
+		update card set card_img =
+		#{card_img}, card_mmti = #{card_mmti} where card_no = #{card_no}
+	</update>
+
+	<!-- 반려식물 등록증 상세 페이지 -->
+	<select id="one" resultType="cardVO">
+		select card_no, card_name,
+		card_species, card_birth, card_mmti, card_img, card_date from card
+		where card_no = #{card_no}
+	</select>
+
+	<!-- 반려식물 등록증 수정 페이지 -->
+	<select id="card_update" resultType="cardVO">
+		select card_no, card_name,
+		card_species, card_birth, card_mmti, card_img, card_date from card
+		where card_no = #{card_no}
+	</select>
+
+	<!-- 반려식물 등록증 전체 목록 -->
+	<select id="all" parameterType="cardVO" resultType="cardVO">
+		select card_no, card_name, card_species, card_birth, card_mmti, card_img, 
+			card_date from card
+		<!-- select * from(
+		select
+		row_number() over(order by card_no desc) as card_no, card_name, card_species,
+		card_birth, card_mmti, card_img, card_date
+		from card c) c2
+		where c2.card_no between ${start} and ${end} -->
+	</select>
+	
+	<!-- <select id="count" resultType="Integer">
+		select count(*) from card
+	</select> -->
+
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+
+	<!-- 게시판 카테고리별 글목록 -->
+	<select id="all_category1" resultType="bbsVO">
+		select *
+		from bbs
+		where community_no = 1
+		order by bbs_no desc
+	</select>
+	<select id="all_category2" resultType="bbsVO">
+		select * from
+		bbs
+		where community_no = 2
+		order by bbs_no desc
+	</select>
+	<select id="all_category3" resultType="bbsVO">
+		select * from
+		bbs
+		where community_no = 3
+		order by bbs_no desc
+	</select>
+
+	<!-- 게시판 글쓰기 -->
+	<insert id="create1" parameterType="bbsVO">
+		insert into bbs values
+		(null, #{bbs_title}, #{bbs_content}, #{bbs_img}, 1, #{member_no})
+	</insert>
+	<insert id="create2" parameterType="bbsVO">
+		insert into bbs values
+		(null, #{bbs_title}, #{bbs_content}, #{bbs_img}, 2, #{member_no})
+	</insert>
+	<insert id="create3" parameterType="bbsVO">
+		insert into bbs values
+		(null, #{bbs_title}, #{bbs_content}, #{bbs_img}, 3, #{member_no})
+	</insert>
+	
+	<!-- 게시글 수정(본인만) -->
+	<update id="update1" parameterType="bbsVO">
+		update bbs
+		set bbs_content = #{bbs_content}
+		where bbs_no = #{bbs_no}
+	</update>
+	<update id="update2" parameterType="bbsVO">
+		update bbs
+		set bbs_content = #{bbs_content}
+		where bbs_no = #{bbs_no}
+	</update>
+	<update id="update3" parameterType="bbsVO">
+		update bbs
+		set bbs_content = #{bbs_content}
+		where bbs_no = #{bbs_no}
+	</update>
+	
+	<!-- 게시글 삭제(본인만) -->
+	<delete id="delete1" parameterType="int">
+		delete
+		from bbs
+		where bbs_no = #{bbs_no}
+	</delete>
+	<delete id="delete2" parameterType="int">
+		delete
+		from bbs
+		where bbs_no = #{bbs_no}
+	</delete>
+	<delete id="delete3" parameterType="int">
+		delete
+		from bbs
+		where bbs_no = #{bbs_no}
+	</delete>
+
+	<!-- 게시글 검색 -->
+	<select id="one1" parameterType="int" resultType="bbsVO">
+		select *
+		from bbs
+		where bbs_no = #{bbs_no}
+	</select>
+	<select id="one2" parameterType="int" resultType="bbsVO">
+		select *
+		from bbs
+		where bbs_no = #{bbs_no}
+	</select>
+	<select id="one3" parameterType="int" resultType="bbsVO">
+		select *
+		from bbs
+		where bbs_no = #{bbs_no}
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="reply_create" parameterType="replyVO">
+		insert into reply values
+		(null, #{reply_content}, #{bbs_no}, #{member_no})
+	</insert>
+    <!-- 댓글 목록 -->
+	<select id="reply_all" resultType="replyVO" parameterType="int">
+		select *
+		from reply
+		where bbs_no = #{bbs_no}
+	</select>
+	<!-- 댓글 삭제 -->
+	<delete id="reply_delete" parameterType="replyVO">
+		delete 
+		from reply 
+		where reply_no = #{reply_no}
+	</delete>
+	
+	<!-- 좋아요 -->	
+	<insert id="heart_ok" parameterType="heartVO">
+		insert into heart values
+		(null, #{bbs_no}, #{member_no})
+	</insert>
+	<!-- 좋아요 취소 -->
+	<delete id="heart_no" parameterType="bookmarkVO">
+		delete
+		from heart
+		where bbs_no = #{bbs_no} and member_no = #{member_no}
+	</delete>
+	
+	<!-- 북마크 -->	
+	<insert id="bookmark_ok" parameterType="bookmarkVO">
+		insert into bookmark values
+		(null, #{bbs_no}, #{member_no})
+	</insert>
+	<!-- 북마크 취소 -->
+	<delete id="bookmark_no" parameterType="bookmarkVO">
+		delete
+		from bookmark
+		where bbs_no = #{bbs_no} and member_no = #{member_no}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
