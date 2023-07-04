@@ -169,7 +169,7 @@
 	
 	<!-- 북마크 리스트 -->
 	<select id="bookmarkList" parameterType="int" resultType="memberBookmarkVO">
-		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bbs.bbs_title, community.community_category
+		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bookmark.bbs_no, bbs.bbs_title, community.community_no, community.community_category
 		FROM bookmark
 		JOIN bbs ON bookmark.bbs_no = bbs.bbs_no
 		JOIN community ON bbs.community_no = community.community_no
@@ -221,6 +221,36 @@
 	<insert id="inquiry_write" parameterType="inquiryVO">
 		insert into inquiry values (null, #{inquiry_writer}, #{inquiry_title}, #{inquiry_content}, now(), now(), null, null, null)
 	</insert>
-
+	
+	<!-- 문의글 list 가져오기 -->
+	<select id="inquiryList" parameterType="int" resultType="memberInquiryVO">
+		SELECT 
+			ROW_NUMBER() OVER (ORDER BY i.inquiry_udate DESC) AS myinquiry_no,
+			i.inquiry_no,
+			i.inquiry_writer,
+			i.inquiry_title,
+			DATE_FORMAT(i.inquiry_udate, '%Y-%m-%d') AS inquiry_udate,
+			CASE WHEN i.inquiry_manager IS NULL THEN '답변전' ELSE '답변완료' END AS answer_check,
+			DATE_FORMAT(i.inquiry_adate, '%Y-%m-%d') AS inquiry_adate
+		FROM inquiry i
+		WHERE i.inquiry_writer = #{no}
+		ORDER BY i.inquiry_udate DESC;
+	</select>
+	
+	<!-- 문의글 하나 가져오기 -->
+	<select id="one_inquiry" parameterType="int" resultType="InquiryVO">
+		select * from inquiry
+		where inquiry_no = #{inquiry_no}
+	</select>
+	
+	<!-- manager 정보 가져오기 -->
+	<select id="manager" parameterType="int" resultType="memberVO">
+		select * from member where member_no = #{member_no}
+	</select>
+	
+	<!-- 문의글 삭제 -->
+	<delete id="del_inquiry"  parameterType="int">
+		delete from inquiry where inquiry_no = #{inquiry_no}
+	</delete>
 	
 </mapper>

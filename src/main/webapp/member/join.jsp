@@ -8,7 +8,8 @@
 <link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/login_join.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <script type="text/javascript">
 	//유효성 검증 (초기값은 false로 설정)
 	let isValidEmail = false;

@@ -8,15 +8,13 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<!-- <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>-->
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/login_join.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
- <!-- 패스워드 숨김보임 기능 눈 이모티콘 -->
 <script type="text/javascript">
 
 $(function() {
@@ -76,34 +74,11 @@ $(function() {
 			}
 		});
 	});
-	
-	// 패스워드 숨김/보임
-	$('.pw i').on('click',function(){
-        $('input').toggleClass('active');
-        if($('input').hasClass('active')){
-            $(this).attr('class',"fa fa-eye-slash")
-            .prev('input').attr('type',"text");
-        }else{
-            $(this).attr('class',"fa fa-eye")
-            .prev('input').attr('type','password');
-        }
-    });
-	
-	
+
 });
+
 </script>
-<style type="text/css">
-/* 패스워드 숨김/보임 */
-div.pw{
-    position: relative;
-}
-div.pw i{
-    position: absolute;
-    left: 80%;
-    top: 26%;
-    color: black
-}
-</style>
+
 </head>
 <body>
 	<div class="muluck_logo">
@@ -116,11 +91,8 @@ div.pw i{
 			<form id="loginForm" action="login" method="post">
 				<input class="input_login" id="member_id" name="member_id"
 					placeholder="  아이디" value="${member_id}" /> 
-				<div class="pw">
-					<input class="input_login" id="member_pw" name="member_pw" type="password" placeholder="  패스워드" />
-					<i class="fa fa-eye"></i>	<!-- 패스워드 숨김/보임 -->
-				</div>	
-					
+				<input class="input_login" id="member_pw" name="member_pw" type="password"
+					placeholder="  패스워드" />
 				<div class="text1">
 					<input class="input_login" type="checkbox" id="idSave"> 아이디
 					저장

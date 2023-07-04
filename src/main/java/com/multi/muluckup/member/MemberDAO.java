@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 @Component
 public class MemberDAO { 
@@ -274,5 +273,29 @@ public class MemberDAO {
 		return result;
 	}
 	
+	//문의글 list불러오기
+	public List<MemberInquiryVO> inquiryList(String inquiry_writer) {
+		int no = Integer.parseInt(inquiry_writer);
+		List<MemberInquiryVO> inquiryList = my.selectList("member.inquiryList", no);
+		//System.out.println(inquiryList);
+		return inquiryList;
+	}
 	
+	// 문의글 검색
+	public InquiryVO one_inquiry(int inquiry_no) {
+		InquiryVO bag = my.selectOne("member.one_inquiry", inquiry_no);
+		return bag;
+	}
+	
+	//manager 정보 가져오기
+	public MemberVO manager(int member_no) {
+		MemberVO manager = my.selectOne("member.manager", member_no);
+		System.out.println(manager);
+		return manager;
+	}
+	
+	//문의글 삭제
+	public void del_inquiry(int inquiry_no) {
+		my.delete("member.del_inquiry", inquiry_no);
+	}
 }

@@ -1,5 +1,6 @@
 package com.multi.muluckup.member;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class InquiryVO {
@@ -67,6 +68,20 @@ public class InquiryVO {
 	public void setInquiry_adate(Date inquiry_adate) {
 		this.inquiry_adate = inquiry_adate;
 	}
+	
+    public String getFormattedInquiryUdate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(inquiry_udate);
+    }
+
+    public String getFormattedInquiryAdate() {
+        if (inquiry_adate == null) {
+            return ""; // inquiry_adate가 null인 경우 빈 문자열 반환
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // HH:mm:ss
+            return sdf.format(inquiry_adate);
+        }
+    }
 	
 	@Override
 	public String toString() {

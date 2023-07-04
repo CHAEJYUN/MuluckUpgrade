@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- <context:component-scan base-package="com.multi.muluck" /> -->
+	<!-- <context:component-scan base-package="com.multi.muluckup" /> -->
 	
 	<!-- file Upload -->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -37,7 +37,7 @@
 	    <beans:property name="host" value="smtp.gmail.com" />
 	    <beans:property name="port" value="587" />
 	    <beans:property name="username" value="hhhj0525@gmail.com" /> <!-- 보낸이 이메일 -->
-	    <beans:property name="password" value="yktdjtaketbuewue" /> <!-- 보낸이 패스워드(2단계 인증으로인해 발급받은 web패스워드) -->
+	    <beans:property name="password" value="aiuifdaxzfteqvaf" /> <!-- 보낸이 패스워드(2단계 인증으로인해 발급받은 web패스워드) -->
 	    <beans:property name="javaMailProperties">
 	    	 <beans:props>
             	<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>

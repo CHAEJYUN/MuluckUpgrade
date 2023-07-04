@@ -40,8 +40,6 @@ public class MemberService {
 		return result;
 	}
 	
-	
-	
 	//카카오 로그인
 	@Autowired
 	MemberDAO dao;
@@ -65,7 +63,7 @@ public class MemberService {
 			sb.append("grant_type=authorization_code");
 			
 			sb.append("&client_id=30ebd1d9b39e44cffc3efc0e21f64df4"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8888/muluckup/member/kakaoLogin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:8888/muluck/member/kakaoLogin"); // 본인이 설정한 주소
 			
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
@@ -137,7 +135,6 @@ public class MemberService {
 //			JsonElement element = parser.parse(result);
 			//위애애들 노란불 떠서 아래로 만듦
 			JsonElement element = JsonParser.parseString(result);
-
 			
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
@@ -159,7 +156,5 @@ public class MemberService {
 		
 		return vo;
 	}
-	
-	
 	
 }
