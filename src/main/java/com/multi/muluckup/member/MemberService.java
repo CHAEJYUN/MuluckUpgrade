@@ -40,8 +40,6 @@ public class MemberService {
 		return result;
 	}
 	
-	
-	
 	//카카오 로그인
 	@Autowired
 	MemberDAO dao;
@@ -137,7 +135,6 @@ public class MemberService {
 //			JsonElement element = parser.parse(result);
 			//위애애들 노란불 떠서 아래로 만듦
 			JsonElement element = JsonParser.parseString(result);
-
 			
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
@@ -159,7 +156,5 @@ public class MemberService {
 		
 		return vo;
 	}
-	
-	
 	
 }

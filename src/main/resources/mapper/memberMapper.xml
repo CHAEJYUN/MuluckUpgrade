@@ -169,7 +169,7 @@
 	
 	<!-- 북마크 리스트 -->
 	<select id="bookmarkList" parameterType="int" resultType="memberBookmarkVO">
-		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bbs.bbs_title, community.community_category
+		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bookmark.bbs_no, bbs.bbs_title, community.community_no, community.community_category
 		FROM bookmark
 		JOIN bbs ON bookmark.bbs_no = bbs.bbs_no
 		JOIN community ON bbs.community_no = community.community_no

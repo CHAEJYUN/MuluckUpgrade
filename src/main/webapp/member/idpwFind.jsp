@@ -6,7 +6,8 @@
 <title>Insert title here</title>
 <link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="../resources/css/login_join.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <script type="text/javascript">
 $(function() {
 	
