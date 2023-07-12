@@ -80,11 +80,11 @@ $(function() {
 			<a href="myInquiry.jsp"><button style="float: left;">이전</button></a>
 		</div>
 		<div class="borderline" style="margin-top: 15px;">
-			<div style="margin-top: 10px; margin-bottom: 10px;">
+			<div style="margin-top: 10px;">
 				<h2 style="font-size: 40px;">${bag.inquiry_title}</h2>
 			 	<span>작성 일: ${bag.formattedInquiryUdate}</span>
 			</div>
-			<div style="margin: 2% 20%; height: 300px; text-align: left;">
+			<div style="margin: 1% 15%; height: 300px; text-align: center; background: lightgray;">
 				<span style="font-size: 20px;">${bag.inquiry_content}</span>
 			</div>
 		</div>
@@ -96,7 +96,7 @@ $(function() {
 				<div style="flex: 1; margin: 5px 10px; text-align: center;">
 					<span id="manager" style="font-size: 20px;"></span>
 				</div>
-				<div style="flex: 5; margin: 5px 10px; text-align: left;">
+				<div style="flex: 5; margin: 5px 10px; text-align: center; background: lightgray;">
 					<span style="font-size: 20px;">${bag.inquiry_answer}</span>
 				</div>
 				<div style="flex: 1; margin: 5px 10px; text-align: center;">
