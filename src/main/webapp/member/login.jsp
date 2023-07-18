@@ -107,7 +107,7 @@ div.pw i{
 </head>
 <body>
 	<div class="muluck_logo">
-		<a href="login.jsp"><img src="../resources/assets/img/무우럭.png"
+		<a href="${pageContext.request.contextPath}/home.jsp"><img src="../resources/assets/img/무우럭.png"
 			alt="로고"></a>
 	</div>
 	<div class="myform">

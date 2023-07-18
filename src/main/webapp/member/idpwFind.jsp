@@ -89,7 +89,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-    <div class="muluck_logo"><a href="login.jsp"><img src="../resources/assets/img/무우럭.png" alt="로고"></a></div>
+    <div class="muluck_logo"><a href="${pageContext.request.contextPath}/home.jsp"><img src="../resources/assets/img/무우럭.png" alt="로고"></a></div>
     <div class="myform">
     	<div class="go_login"><a href="login.jsp"><button>X</button></a></div>
         <div id="login_title" class="title">아이디/패스워드 찾기</div>

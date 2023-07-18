@@ -37,7 +37,7 @@
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
                             <h5 class="display-4"> 특별해지는 우리사이!</h5>
-                            MMTI 테스트를 통해 반려식물의 성격을 알 수 있어요</p>						
+                            <p>MMTI 테스트를 통해 반려식물의 성격을 알 수 있어요</p>						
                         </div>
 					<div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="../mmti/mmti_main.jsp" style="color : #fff;">MMTI 테스트 하러가기</a></div>
                     </div>
@@ -54,10 +54,9 @@
                    <div class="col-lg-6">
                         <div class="p-5">
                            <h4 class="display-4">가까워지는 우리사이!</h4>
-                            반려식물 등록증을 통해 반려식물을 자랑할 수 있어요</p>					
+                            <p>반려식물 등록증을 통해 반려식물을 자랑할 수 있어요</p>					
 							</div>
                         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="${pageContext.request.contextPath}/card/list" style="color : #fff;">반려식물 등록증 만들어보기</a></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +72,7 @@
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
                             <h2 class="display-4">편리하고 소중하게!</h2>
-							캘린더를 통해 식물을 편리하게 가꾸어보아요<br>
+							<p>캘린더를 통해 식물을 편리하게 가꾸어보아요<br>
 							매일매일 식물일지를 기록해 추억을 쌓아보아요</p>
                         </div>
                         <div class="intro-button mx-auto">
@@ -97,10 +96,9 @@
                    <div class="col-lg-6">
                         <div class="p-5">
                            <h4 class="display-4">식집사들끼리 소통해요!</h4>
-                            무우럭 회원들과 다양한 이야기를 나누어보아요</p>
+                            <p>무우럭 회원들과 다양한 이야기를 나누어보아요</p>
 							</div>
                         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="../community/community.jsp" style="color : #fff;">커뮤니티 바로가기</a></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -116,7 +114,7 @@
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
                             <h2 class="display-4">필요한 것들, 모두 여기서!</h2>
-							거래와 나눔을통해 마음을 나누어 보아요</p>
+							<p>거래와 나눔을통해 마음을 나누어 보아요</p>
                         </div>
                         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="../business/business_main.jsp" style="color : #fff;">거래/나눔 바로가기</a></div>
                     </div>
