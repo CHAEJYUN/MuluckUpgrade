@@ -120,6 +120,11 @@ $(document).ready(function() {
                 </div>
             </div>
             <a href="login.jsp"><button class="btn white_btn" id="go_login">로그인 하러가기</button></a>
+            <hr style="color: gray; margin-left: 5%; margin-right: 5%;">
+			<div class="text1" style="padding-bottom: 15px;">
+				관리자이신가요?&nbsp;&nbsp;&nbsp;
+				<a id="mLogin" href="${pageContext.request.contextPath}/manager/managerLogin.jsp">관리자 로그인으로 이동</a>
+			</div>
         </div>
     </div>
 </body>

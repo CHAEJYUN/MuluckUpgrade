@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager">
+	<!-- insert, delete, update는 무조건 resultType="int"이므로
+		 프로그래머가 써주지 않아도 이미 resultType="int"가 있는 것으로 본다. -->
+<!-- 		 
+	<insert id="create" parameterType="memberVO">
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, default)
+	</insert>
+	
+	<delete id="del"  parameterType="String">
+		delete from member where member_no = #{member_no}
+	</delete>
+	
+	<select id="one" parameterType="String" resultType="memberVO">
+		select *
+		from member
+		where member_no = #{member_no}
+	</select>
+	
+	<update id="up"  parameterType="memberVO">
+		update member set member_pw = #{member_pw}, member_email = #{member_email}, 
+		member_name = #{member_name}, member_tel = #{member_tel}, member_nickname = #{member_nickname}, 
+		member_img = #{member_img}, member_gender = #{member_gender}, member_birthyear = #{member_birthyear}, member_manager = #{member_manager} 
+		where member_no = #{member_no}
+	</update>
+	
+			입력값이 없어서 parameterType 안써줌!
+	<select id="all" resultType="memberVO">
+		select * from member
+	</select>
+-->	
+
+	<!-- manager 로그인 -->
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from member where member_id = #{member_id} AND member_pw = #{member_pw}
+	</select>
+
+</mapper>
