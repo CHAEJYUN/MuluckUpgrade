@@ -55,7 +55,7 @@ $(function() {
 				console.log('result>> ' + result)
 				if(result === 'true'){
 					//alert('성공했어요') //성공하는지 확인
-					window.location.href = "../manager/managerHome.jsp"; // 메인 페이지로 이동(다솜님페이지로) "../main/home.jsp";
+					window.location.href = "../manager/managerInquiry.jsp"; // 메인 페이지로 이동(다솜님페이지로) "../main/home.jsp";
 				} else {
 					// 로그인 실패
 			        $("#mLoginResult").html("아이디 또는 비밀번호를 잘못 입력했습니다. <br>입력하신 내용을 다시 확인해주세요.").css('color','red');
@@ -127,7 +127,7 @@ div.pw i{
 				<div class="sameCheck" id="mLoginResult"></div>
 				<button class="btn black_btn" type="submit">로그인</button>
 			</form>
-			<a href="join.jsp"><button class="btn white_btn" type="submit">회원가입</button></a>
+			<a href="managerJoin.jsp"><button class="btn white_btn" type="submit">관리자가입신청</button></a>
 			<div class="text1">
 				<a href="${pageContext.request.contextPath}/member/idpwFind.jsp">아이디 찾기 / 패스워드 변경</a>
 			</div>
