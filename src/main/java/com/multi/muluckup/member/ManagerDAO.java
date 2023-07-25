@@ -1,5 +1,7 @@
 package com.multi.muluckup.member;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -68,6 +70,31 @@ public class ManagerDAO {
 	//회원탈퇴
 	public void drop(int member_no) {
 		my.delete("manager.drop", member_no);
+	}
+	
+	//답변 대기 문의 목록 가져오기
+	public List<ManagerInquiryVO> waitList() {
+		List<ManagerInquiryVO> waitList = my.selectList("manager.waitList");
+		return waitList;
+	}
+	
+	//답변 완료 문의 목록 가져오기
+	public List<ManagerInquiryVO> completeList() {
+		List<ManagerInquiryVO> completeList = my.selectList("manager.completeList");
+		return completeList;
+	}
+	
+	// 문의글 검색
+	public InquiryVO one_inquiry(int inquiry_no) {
+		InquiryVO bag = my.selectOne("manager.one_inquiry", inquiry_no);
+		return bag;
+	}
+	
+	//manager 정보 가져오기
+	public MemberVO manager(int member_no) {
+		MemberVO manager = my.selectOne("member.manager", member_no);
+		System.out.println(manager);
+		return manager;
 	}
 	
 }

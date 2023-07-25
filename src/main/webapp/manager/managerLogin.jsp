@@ -58,7 +58,7 @@ $(function() {
 					window.location.href = "../manager/managerInquiry.jsp"; // 메인 페이지로 이동(다솜님페이지로) "../main/home.jsp";
 				} else {
 					// 로그인 실패
-			        $("#mLoginResult").html("아이디 또는 비밀번호를 잘못 입력했습니다. <br>입력하신 내용을 다시 확인해주세요.").css('color','red');
+			        $("#mLoginResult").html("등록된 관리자 계정이 없습니다. <br>입력하신 내용을 다시 확인해주세요.").css('color','red');
 					if (idSaveChecked) {
 						$('#member_pw').val('');
 						$('#member_pw').focus();

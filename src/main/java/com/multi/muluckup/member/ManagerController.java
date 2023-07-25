@@ -1,6 +1,7 @@
 package com.multi.muluckup.member;
 
 import java.io.File;
+import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -89,7 +92,42 @@ public class ManagerController {
 			return "redirect:/managerJoin.jsp?error=true";
 		}
 	}
-	
+	 
+	 //전화번호 인증번호 보내기
+	 @PostMapping("phoneAuth")
+	 @ResponseBody
+	 public Boolean phoneAuth(String tel, HttpSession session) {
+
+		 String member_tel = tel;
+	     try { // 이미 가입된 전화번호가 있으면
+	         if(MemberService.memberTelCount(member_tel) > 0) 
+	             return false; 
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	     }
+	     
+	     String code = memberService.sendRandomMessage(member_tel);
+	     session.setAttribute("rand", code);
+	     
+	     return true;
+	 }
+	 
+	//전화번호 인증번호 확인하기
+	 @PostMapping("phoneAuthOk")
+	 @ResponseBody
+	 public Boolean phoneAuthOk(HttpSession session, HttpServletRequest request) {
+	     String rand = (String) session.getAttribute("rand");
+	     String code = (String) request.getParameter("code");
+
+	     System.out.println(rand + " : " + code);
+
+	     if (rand.equals(code)) {
+	         session.removeAttribute("rand");
+	         return true;
+	     } 
+
+	     return false;
+	 }
 	
 	//email 중복 체크
 	@RequestMapping(value = "emailCheck", method = RequestMethod.POST)
@@ -180,6 +218,41 @@ public class ManagerController {
 		
 		 return "redirect:/manager/managerLogin.jsp";
 	 }
+	 
+	 // 답변 대기 문의 목록 가져오기
+	 @PostMapping("inquiry_wait")
+	 public void inquiry_wait(Model model) {
+		 List<ManagerInquiryVO> waitList = dao.waitList();
+		 //System.out.println("사이즈: " + waitList.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("waitList", waitList);
+	 }
+	 
+	 // 답변 완료 문의 목록 가져오기
+	 @PostMapping("inquiry_complete")
+	 public void inquiry_complete(Model model) {
+		 List<ManagerInquiryVO> completeList = dao.completeList();
+		 //System.out.println("사이즈: " + completeList.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("completeList", completeList);
+	 }
+	 
+	//문의글 하나 가져오기
+	@RequestMapping("one_inquiry")
+	public void one_inquiry(int inquiry_no, Model model) {
+		//System.out.println(inquiry_no);
+		InquiryVO bag = dao.one_inquiry(inquiry_no);
+		model.addAttribute("bag", bag);
+	}
+	
+	//manager 정보 가져오기
+	@RequestMapping("manager")
+	@ResponseBody
+	public MemberVO manager(@RequestParam("member_no") Integer inquiry_manager) {
+	 	int member_no = inquiry_manager;
+	 	//System.out.println("member_no: " + member_no);
+		MemberVO result = dao.manager(member_no);
+		System.out.println(result);
+		return result;
+	}
 	
 	
 }
