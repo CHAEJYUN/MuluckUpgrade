@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager">
+	<!-- insert, delete, update는 무조건 resultType="int"이므로
+		 프로그래머가 써주지 않아도 이미 resultType="int"가 있는 것으로 본다. -->
+<!-- 		 
+	<insert id="create" parameterType="memberVO">
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, default)
+	</insert>
+	
+	<delete id="del"  parameterType="String">
+		delete from member where member_no = #{member_no}
+	</delete>
+	
+	<select id="one" parameterType="String" resultType="memberVO">
+		select *
+		from member
+		where member_no = #{member_no}
+	</select>
+	
+	<update id="up"  parameterType="memberVO">
+		update member set member_pw = #{member_pw}, member_email = #{member_email}, 
+		member_name = #{member_name}, member_tel = #{member_tel}, member_nickname = #{member_nickname}, 
+		member_img = #{member_img}, member_gender = #{member_gender}, member_birthyear = #{member_birthyear}, member_manager = #{member_manager} 
+		where member_no = #{member_no}
+	</update>
+	
+			입력값이 없어서 parameterType 안써줌!
+	<select id="all" resultType="memberVO">
+		select * from member
+	</select>
+-->	
+	<!-- manager 가입신청 -->
+	<insert id="create" parameterType="memberVO">
+		insert into member values (null, #{member_id}, #{member_pw}, #{member_email}, #{member_name}, #{member_tel}, #{member_nickname}, default, default, #{member_birthyear}, #{member_manager})
+	</insert>
+	
+		<!-- 이메일 중복체크 -->
+	<select id="emailCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_email = #{member_email}
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_id = #{member_id}
+	</select>
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="nicknameCheck" parameterType="String" resultType="int">
+		select COUNT(*) from member where member_nickname = #{member_nickname}
+	</select>
+
+	<!-- manager 로그인 -->
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from member where member_id = #{member_id} AND member_pw = #{member_pw}
+	</select>
+	
+		<!-- 회원정보 가져오기 -->
+	<select id="memberInfo" parameterType="int" resultType="memberVO">
+		select * from member where member_no = #{member_no}
+	</select>
+
+	<!-- 프로필 이미지, 닉네임, 성별, 연령대 변경 -->
+	<update id="profile"  parameterType="memberVO">
+		update member set member_nickname = #{member_nickname}, member_img = #{member_img}, member_gender = #{member_gender}, member_birthyear = #{member_birthyear}
+		where member_no = #{member_no}
+	</update>
+	
+	<!-- 이메일, pw, 이름, 전화번호 변경 -->
+	<update id="revise_up" parameterType="memberVO">
+	    <if test="member_pw != null">
+	        update member set member_email = #{member_email}, member_pw = #{member_pw}, member_name = #{member_name}, member_tel = #{member_tel}
+	    </if>
+	    <if test="member_pw == null">
+	        update member set member_email = #{member_email}, member_name = #{member_name}, member_tel = #{member_tel}
+	    </if>
+	    where member_no = #{member_no}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="drop"  parameterType="int">
+		delete from member where member_no = #{member_no}
+	</delete>
+	
+	<!-- 답변 대기 문의 목록 가져오기 -->
+	<select id="waitList" resultType="ManagerInquiryVO">
+		SELECT 
+		    ROW_NUMBER() OVER(ORDER BY i.inquiry_udate) AS no,
+		    i.inquiry_no,
+		    i.inquiry_title,
+		    i.inquiry_writer,
+		    m.member_nickname AS writer_nickname,
+		    DATE_FORMAT(i.inquiry_udate, '%Y-%m-%d') AS inquiry_udate
+		FROM 
+		    inquiry i
+		LEFT JOIN 
+		    member m ON i.inquiry_writer = m.member_no
+		WHERE 
+		    i.inquiry_manager IS NULL
+		ORDER BY 
+		    i.inquiry_udate;
+	</select>
+	
+	<!-- 답변 완료 문의 목록 가져오기 -->
+	<select id="completeList" resultType="ManagerInquiryVO">
+		SELECT 
+	    ROW_NUMBER() OVER(ORDER BY i.inquiry_adate DESC) AS no,
+	    i.inquiry_no,
+	    i.inquiry_title,
+	    i.inquiry_writer,
+	    m_writer.member_nickname AS writer_nickname,
+	    DATE_FORMAT(i.inquiry_udate, '%Y-%m-%d') AS inquiry_udate,
+	    i.inquiry_manager,
+	    m_manager.member_nickname AS answer_nickname,
+	    DATE_FORMAT(i.inquiry_adate, '%Y-%m-%d') AS inquiry_adate
+	FROM 
+	    inquiry i
+	LEFT JOIN 
+	    member m_writer ON i.inquiry_writer = m_writer.member_no
+	LEFT JOIN 
+	    member m_manager ON i.inquiry_manager = m_manager.member_no
+	WHERE 
+	    i.inquiry_manager IS NOT NULL
+	ORDER BY 
+	    i.inquiry_adate DESC;
+	</select>
+	
+	<!-- 문의글 하나 가져오기 -->
+	<select id="one_inquiry" parameterType="int" resultType="InquiryVO">
+		select * from inquiry
+		where inquiry_no = #{inquiry_no}
+	</select>
+	
+	<!-- manager 정보 가져오기 -->
+	<select id="manager" parameterType="int" resultType="memberVO">
+		select * from member where member_no = #{member_no}
+	</select>
+	
+</mapper>

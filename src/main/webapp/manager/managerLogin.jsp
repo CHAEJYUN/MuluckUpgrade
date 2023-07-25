@@ -13,8 +13,6 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <link rel="stylesheet" type="text/css" href="../resources/css/login_join.css">
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
  <!-- 패스워드 숨김보임 기능 눈 이모티콘 -->
 <script type="text/javascript">
@@ -37,7 +35,7 @@ $(function() {
     }
 	
 	//로그인 버튼 선택시 회원인지 확인
-	$('#loginForm').submit(function(event) {
+	$('#mLoginForm').submit(function(event) {
 		event.preventDefault(); // 폼 전송 동작 중지
 		var member_id = $('#member_id').val();
 		var member_pw = $('#member_pw').val();
@@ -49,7 +47,7 @@ $(function() {
 			localStorage.removeItem('savedId');
 		}
 		$.ajax({
-			url: "login",
+			url: "mLogin",
 			type: "post",
 			data: {member_id: member_id, member_pw: member_pw},
 			dataType: "text",
@@ -57,10 +55,10 @@ $(function() {
 				console.log('result>> ' + result)
 				if(result === 'true'){
 					//alert('성공했어요') //성공하는지 확인
-					window.location.href = "../main/home.jsp"; // 메인 페이지로 이동(다솜님페이지로) "../main/home.jsp";
+					window.location.href = "../manager/managerInquiry.jsp"; // 메인 페이지로 이동(다솜님페이지로) "../main/home.jsp";
 				} else {
 					// 로그인 실패
-			        $("#loginResult").html("아이디 또는 비밀번호를 잘못 입력했습니다. <br>입력하신 내용을 다시 확인해주세요.").css('color','red');
+			        $("#mLoginResult").html("등록된 관리자 계정이 없습니다. <br>입력하신 내용을 다시 확인해주세요.").css('color','red');
 					if (idSaveChecked) {
 						$('#member_pw').val('');
 						$('#member_pw').focus();
@@ -72,7 +70,7 @@ $(function() {
 				}
 			},
 			error: function() {
-				$("#loginResult").html("에러가 발생하였습니다.").css('color', 'red');
+				$("#mLoginResult").html("에러가 발생하였습니다.").css('color', 'red');
 			}
 		});
 	});
@@ -111,9 +109,10 @@ div.pw i{
 			alt="로고"></a>
 	</div>
 	<div class="myform">
-		<div id="login_title" class="title">로그인</div>
+		<div class="go_login"><a href="${pageContext.request.contextPath}/member/login.jsp"><button>X</button></a></div>
+		<div id="login_title" class="title">관리자 로그인</div>
 		<div class="center">
-			<form id="loginForm" action="login" method="post">
+			<form id="mLoginForm" action="mLogin" method="post">
 				<input class="input_login" id="member_id" name="member_id"
 					placeholder="  아이디" value="${member_id}" /> 
 				<div class="pw">
@@ -125,43 +124,16 @@ div.pw i{
 					<input class="input_login" type="checkbox" id="idSave"> 아이디
 					저장
 				</div>
-				<div class="sameCheck" id="loginResult"></div>
+				<div class="sameCheck" id="mLoginResult"></div>
 				<button class="btn black_btn" type="submit">로그인</button>
 			</form>
-			<a href="join.jsp"><button class="btn white_btn" type="submit">회원가입</button></a>
+			<a href="managerJoin.jsp"><button class="btn white_btn" type="submit">관리자가입신청</button></a>
 			<div class="text1">
-				<a href="idpwFind.jsp">아이디 찾기 / 패스워드 변경</a>
+				<a href="${pageContext.request.contextPath}/member/idpwFind.jsp">아이디 찾기 / 패스워드 변경</a>
 			</div>
-			<hr style="color: gray; margin-left: 5%; margin-right: 5%;">
-			<div id="text2">
-				<b>SNS 계정으로 로그인하기</b>
-			</div>
-			<div id="logo">
-				<!-- 네이버 로그인 버튼 노출 영역 -->
-				<div id="naver_id_login" style="margin-bottom: 3px;"></div>
-
-				<!-- 카카오 로그인 버튼 노출 영역 -->
-				<a class="p-2"
-					href="https://kauth.kakao.com/oauth/authorize?client_id=30ebd1d9b39e44cffc3efc0e21f64df4&redirect_uri=http://localhost:8888/muluck/member/kakaoLogin&response_type=code">
-					<!-- REST_API키 및 REDIRECT_URi는 본인걸로 수정하세요 --> <img
-					src="${pageContext.request.contextPath}/resources/upload/member/kakao_login.png"
-					style="height: 45px; width: 200px;">
-				</a>
-			</div>
-			<script type="text/javascript">
-				var naver_id_login = new naver_id_login("u4ZSMzPdnSJwhVD6Q0ZO",
-						"http://localhost:8888/muluck/member/callback.jsp");
-				var state = naver_id_login.getUniqState();
-				naver_id_login.setButton("green", 3, 39);
-				naver_id_login.setDomain("http://localhost:8888/muluck/");
-				naver_id_login.setState(state);
-				//naver_id_login.setPopup();
-				naver_id_login.init_naver_id_login();
-			</script>
-			<hr style="color: gray; margin-left: 5%; margin-right: 5%;">
-			<div class="text1" style="padding-bottom: 15px;">
-				관리자이신가요?&nbsp;&nbsp;&nbsp;
-				<a id="mLogin" href="${pageContext.request.contextPath}/manager/managerLogin.jsp">관리자 로그인으로 이동</a>
+			<div>
+				<hr style="color: gray; margin-left: 5%; margin-right: 5%;">
+				<a href="${pageContext.request.contextPath}/member/login.jsp"><button class="btn white_btn" type="submit">회원 로그인으로 이동</button></a>
 			</div>
 		</div>
 	</div>

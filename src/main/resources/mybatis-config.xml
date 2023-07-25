@@ -19,6 +19,7 @@
 		<typeAlias type="com.multi.muluckup.member.MemberFollowVO" alias="memberFollowVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.InquiryVO" alias="inquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.MemberInquiryVO" alias="memberinquiryVO"></typeAlias>
+		<typeAlias type="com.multi.muluckup.member.ManagerInquiryVO" alias="managerInquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.card.CardVO" alias="cardVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.calendarVO" alias="calendarVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.diaryVO" alias="diaryVO"></typeAlias>
@@ -34,6 +35,7 @@
 		<mapper resource="mapper/calendarMapper.xml" />
 		<mapper resource="mapper/diaryMapper.xml" />
 		<mapper resource="mapper/businessMapper.xml" />
+		<mapper resource="mapper/managerMapper.xml" />
 		<!-- <mapper resource="mapper/mmtiMapper.xml" />  -->
 	</mappers>
 </configuration>
