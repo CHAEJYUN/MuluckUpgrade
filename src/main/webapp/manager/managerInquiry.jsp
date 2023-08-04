@@ -50,7 +50,7 @@ $(function() {
 	//답변 완료 문의 button 눌렀을때
 	$('#complete').click(function() {
 		$('#inquiry').empty() //기존의 inquiry에 있는 것 삭제됨
-		$('#post').css({'font-weight': 'medium', 'background-color': '#f2f1df'});
+		$('#wait').css({'font-weight': 'medium', 'background-color': '#f2f1df'});
         $('#complete').css({'font-weight': 'bold', 'background-color': '#dedede'});
 		$.ajax({
 			url: "inquiry_complete",

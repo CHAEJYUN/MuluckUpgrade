@@ -23,6 +23,7 @@
 <script type="text/javascript">
 $(function() {
     $('#answer').hide();
+    $('#write').hide();
 	const inquiry_manager = ${bag.inquiry_manager};
 	
 	if(inquiry_manager !== 0){
@@ -41,8 +42,9 @@ $(function() {
 			error: function() {
 				$("#manager").html("관리자"); //.css('color', 'red')
 			}
-		});
-		
+		});//ajax
+	} else {
+		$('#write').show();
 	}
 	
 })//function
@@ -66,9 +68,12 @@ $(function() {
 				<span style="font-size: 20px;">${bag.inquiry_content}</span>
 			</div>
 		</div>
+		
+		<!-- 답변 -->
 		<div id="answer" class="borderline" style="display: flex; flex-direction: column; margin-top: 15px; margin-bottom: 10px;">
 			<div style="flex: 2; text-align: left; margin-top: 10px; margin-left: 5%;">
 				<span style="font-size: 20px; font-weight: bold;">문의 답변:</span>
+				<button style="margin-right: 60px; float: right;">수정하기</button>
 			</div>
 			<div style="flex:5; display: flex; flex-direction: row;">
 				<div style="flex: 1; margin: 5px 10px; text-align: center;">
@@ -81,6 +86,24 @@ $(function() {
 					<span style="font-size: 20px;">${bag.formattedInquiryAdate}</span>
 				</div>
 			</div>
+		</div>
+		
+		<!-- 답변쓰기 -->
+		<div id="write" class="borderline" style="display: flex; flex-direction: row; margin-top: 15px; margin-bottom: 10px;">
+			<form action="">
+				<input name="member_no" value=${member_no} type="hidden"/>
+				<div style="flex: 1; margin: 5px 10px; text-align: center;">
+					${member_nickname}
+				</div>
+				<div style="flex: 5; margin: 5px 10px; text-align: center;">
+					<textarea rows="5" cols="50"></textarea>
+				</div>
+				<div style="flex: 1; margin: 5px 10px; text-align: center;">
+					<button type="submit">답변완료</button>
+				</div>
+			
+			
+			</form>
 		</div>
 	</div>
 </div>

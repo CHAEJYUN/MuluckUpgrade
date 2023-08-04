@@ -47,10 +47,8 @@
 		}
 
 $(function() {
-	
 	// 초기에 버튼 비활성화
     checkValidation();
-	
 	//inquiry_title비어있을때 알림
 	$('#inquiry_title').blur(function() {
 		const title = $('#inquiry_title').val();
@@ -149,7 +147,7 @@ $(function() {
 			<form onsubmit="return false;">
 				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
 					<span style="flex: 3;">문의 제목:</span> 
-					<input id="inquiry_title" style="flex: 7; margin-right: 20%;" name="inquiry_title" type="text" placeholder=" 30글자 이내의 타이틀" maxlength="30";>
+					<input id="inquiry_title" style="flex: 7; margin-right: 20%;" name="inquiry_title" type="text" placeholder=" 30글자 이내의 타이틀" maxlength="30">
 				</div>
 				<div id="result_title" class="nullCheck"></div>
 				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
