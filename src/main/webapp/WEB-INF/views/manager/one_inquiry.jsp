@@ -73,6 +73,12 @@ $(function() {
         });//ajax
 	});	// 문의글 답변
 	
+	
+	//문의글 수정
+	$('#inquiry_modify').click(function() {
+		$('#write').show();
+	})
+	
 });//function
 </script>
 </head>
@@ -99,7 +105,7 @@ $(function() {
 		<div id="answer" class="borderline" style="display: flex; flex-direction: column; margin-top: 30px; margin-bottom: 10px;">
 			<div style="flex: 2; text-align: left; margin-top: 10px; margin-left: 5%;">
 				<span style="font-size: 20px; font-weight: bold;">문의 답변:</span>
-				<button style="margin-right: 60px; float: right;">수정하기</button>
+				<button id="inquiry_modify" type="button" style="margin-right: 60px; float: right;">수정하기</button>
 			</div>
 			<div style="flex:5; display: flex; flex-direction: row;">
 				<div style="flex: 1; margin: 5px 10px; text-align: center;">
