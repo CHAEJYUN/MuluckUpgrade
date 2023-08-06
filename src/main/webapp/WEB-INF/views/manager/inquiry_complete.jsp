@@ -23,7 +23,7 @@
 			<td class="top">
 				<form action="modify">
 					<input name="inquiry_no" value="${bag.inquiry_no}" type="hidden"/>
-					<button type="submit">수정</button>
+					<a href="../manager/one_inquiry?inquiry_no=${bag.inquiry_no}"><button type="button">수정</button></a>
 				</form>
 			</td>
 		</tr>

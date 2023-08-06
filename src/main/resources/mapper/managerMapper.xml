@@ -136,4 +136,11 @@
 		select * from member where member_no = #{member_no}
 	</select>
 	
+	<!-- 문의글 답변쓰기 -->
+	<update id="inquiry_answer"  parameterType="InquiryVO">
+		UPDATE inquiry SET inquiry_manager = #{inquiry_manager}, inquiry_answer = #{inquiry_answer}, inquiry_adate = now()
+		WHERE inquiry_no = #{inquiry_no};
+	</update>	
+	
+	
 </mapper>

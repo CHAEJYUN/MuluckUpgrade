@@ -22,7 +22,7 @@ $(function() {
 	
 	//답변 대기 문의 버튼 눌려 있기
 	$('#wait').css({'font-weight': 'bold', 'background-color': '#dedede'});
-    $('#complete').css({'font-weight': 'medium', 'background-color': '#f2f1df'});
+    $('#complete').css({'font-weight': 'bold', 'background-color': '#f2f1df'});
 	$.ajax({
 		url: "inquiry_wait",
 		type: "POST", // POST 요청으로 설정
@@ -36,7 +36,7 @@ $(function() {
 	$('#wait').click(function() {
 		$('#inquiry').empty() //기존의 inquiry에 있는 것 삭제됨
 		$('#wait').css({'font-weight': 'bold', 'background-color': '#dedede'});
-        $('#complete').css({'font-weight': 'medium', 'background-color': '#f2f1df'});
+        $('#complete').css({'font-weight': 'bold', 'background-color': '#f2f1df'});
 		$.ajax({
 			url: "inquiry_wait",
 			method: "POST", // POST 요청으로 설정
@@ -50,7 +50,7 @@ $(function() {
 	//답변 완료 문의 button 눌렀을때
 	$('#complete').click(function() {
 		$('#inquiry').empty() //기존의 inquiry에 있는 것 삭제됨
-		$('#wait').css({'font-weight': 'medium', 'background-color': '#f2f1df'});
+		$('#wait').css({'font-weight': 'bold', 'background-color': '#f2f1df'});
         $('#complete').css({'font-weight': 'bold', 'background-color': '#dedede'});
 		$.ajax({
 			url: "inquiry_complete",

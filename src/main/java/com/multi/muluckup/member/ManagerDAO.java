@@ -92,9 +92,15 @@ public class ManagerDAO {
 	
 	//manager 정보 가져오기
 	public MemberVO manager(int member_no) {
-		MemberVO manager = my.selectOne("member.manager", member_no);
+		MemberVO manager = my.selectOne("manager.manager", member_no);
 		System.out.println(manager);
 		return manager;
+	}
+	
+	// 문의글 답변쓰기
+	public int inquiry_answer(InquiryVO bag) {
+		int result = my.update("manager.inquiry_answer", bag);
+		return result;
 	}
 	
 }
