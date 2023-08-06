@@ -19,7 +19,7 @@
 			<td class="top">
 				<form action="answer">
 					<input name="inquiry_no" value="${bag.inquiry_no}" type="hidden"/>
-					<button type="submit">답변</button>
+					<a href="../manager/one_inquiry?inquiry_no=${bag.inquiry_no}"><button type="button">답변</button></a>
 				</form>
 			</td>
 		</tr>

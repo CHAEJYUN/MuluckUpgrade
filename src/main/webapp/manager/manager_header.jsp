@@ -26,7 +26,8 @@
 	<h1 class="site-heading text-center text-faded d-none d-lg-block">
 		<div style="display: flex; justify-content: center;">
 			<a href="${pageContext.request.contextPath}/manager/managerInquiry.jsp">
-			<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/></a>
+				<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/>
+			</a>
 		</div>
 	</h1>
 </header>

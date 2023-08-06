@@ -23,6 +23,7 @@
 <script type="text/javascript">
 $(function() {
     $('#answer').hide();
+    $('#write').hide();
 	const inquiry_manager = ${bag.inquiry_manager};
 	
 	if(inquiry_manager !== 0){
@@ -41,11 +42,38 @@ $(function() {
 			error: function() {
 				$("#manager").html("관리자"); //.css('color', 'red')
 			}
-		});
-		
+		});//ajax
+	} else {
+		$('#write').show();
 	}
 	
-})//function
+	// 문의글 답변
+    $('#answer_send').click(function() {
+        const member_no = '${member_no}';
+        const answer = $('#inquiry_answer').val().replace(/\n/g, "<br>");
+        const inquiry_no = '${bag.inquiry_no}';
+        
+        $.ajax({
+            type: "POST", // POST 방식으로 데이터 전송
+            url: "inquiry_answer",
+            data: {
+                inquiry_no: inquiry_no,
+                inquiry_manager: member_no,
+                inquiry_answer: answer
+            },
+            success: function(x) {
+                if (x === true) {
+                    window.location.href = "${pageContext.request.contextPath}/manager/managerInquiry.jsp";
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                // 요청 실패 시 처리할 로직
+            }//error
+        });//ajax
+	});	// 문의글 답변
+	
+});//function
 </script>
 </head>
 <body>
@@ -66,9 +94,12 @@ $(function() {
 				<span style="font-size: 20px;">${bag.inquiry_content}</span>
 			</div>
 		</div>
-		<div id="answer" class="borderline" style="display: flex; flex-direction: column; margin-top: 15px; margin-bottom: 10px;">
+		
+		<!-- 답변 -->
+		<div id="answer" class="borderline" style="display: flex; flex-direction: column; margin-top: 30px; margin-bottom: 10px;">
 			<div style="flex: 2; text-align: left; margin-top: 10px; margin-left: 5%;">
 				<span style="font-size: 20px; font-weight: bold;">문의 답변:</span>
+				<button style="margin-right: 60px; float: right;">수정하기</button>
 			</div>
 			<div style="flex:5; display: flex; flex-direction: row;">
 				<div style="flex: 1; margin: 5px 10px; text-align: center;">
@@ -81,6 +112,16 @@ $(function() {
 					<span style="font-size: 20px;">${bag.formattedInquiryAdate}</span>
 				</div>
 			</div>
+		</div>
+		
+		<!-- 답변쓰기 -->
+		<div id="write" class="borderline" style="display: flex; flex-direction: row; margin-top: 30px; margin-bottom: 10px;">
+			<!-- <input name="member_no" value=${member_no} type="hidden"/> -->
+			<div style="flex: 1; margin: auto 10px; text-align: center;">
+				${member_nickname}
+			</div>
+			<textarea id="inquiry_answer" name="inquiry_answer" rows="5" style="flex: 5; margin: 5px 10px; padding: 2px 5px;" placeholder=" 문의 답변을 입력하세요."></textarea>
+			<button id="answer_send" type="button" style="flex: 1; margin: auto 10px; text-align: center;">답변완료</button>
 		</div>
 	</div>
 </div>

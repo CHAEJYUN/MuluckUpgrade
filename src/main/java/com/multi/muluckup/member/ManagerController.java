@@ -254,5 +254,18 @@ public class ManagerController {
 		return result;
 	}
 	
+	//문의글 답변쓰기
+	@RequestMapping(value = "inquiry_answer", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean inquiry_answer(InquiryVO bag) {
+		System.out.println("문의답변 등록");
+		int result = dao.inquiry_answer(bag);
+		if(result != 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	
 }
