@@ -133,6 +133,10 @@ public class ManagerDAO {
 		return result;
 	}
 	
-	
+	//관리자 no가 답한 문의글 목록
+	public List<ManagerInquiryVO> manager_inquiry(int member_no) {
+		List<ManagerInquiryVO> manager_inquiry = my.selectList("manager.manager_inquiry", member_no);
+		return manager_inquiry;
+	}
 	
 }

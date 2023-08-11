@@ -111,6 +111,7 @@ div.pw i{
 			alt="로고"></a>
 	</div>
 	<div class="myform">
+		<div class="go_login"><a href="${pageContext.request.contextPath}/home.jsp"><button>X</button></a></div>
 		<div id="login_title" class="title">로그인</div>
 		<div class="center">
 			<form id="loginForm" action="login" method="post">

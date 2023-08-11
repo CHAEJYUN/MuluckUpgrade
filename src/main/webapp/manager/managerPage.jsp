@@ -8,7 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>매니저마이페이지</title>
+<title>관리자마이페이지</title>
 <link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -140,21 +140,21 @@
 <!-- 마이페이지 회원정보 -->
 <div id="my" style="display: flex; justify-content: space-between;">
 	<!-- 메뉴카테고리 -->
-	<div id="my_menu" style="flex: 2;  min-height: 430px">
+	<div id="my_menu" style="flex: 2;  min-height: 450px">
 		<div class="menu_list" id="menu_title">
 			<a class="menu"
 				style="color: #145f37; font-weight: 900; text-decoration: none; font-size: 30px;">
-				매니저페이지 </a>
+				관리자페이지 </a>
 		</div>
 		<div class="menu_list">
 			<a class="menu" href="${pageContext.request.contextPath}/manager/managerPage"
 				style="text-decoration: underline; font-weight: bolder; background: lightgray; font-size: 25px;">
-				매니저 정보 </a>
+				관리자 정보 </a>
 		</div>
 		<div class="menu_list">
 			<a class="menu" href="${pageContext.request.contextPath}/manager/managerActivity.jsp"
 				style="text-decoration: none; font-weight: 500; font-size: 25px;">
-				매니저 활동 </a>
+				관리자 활동 </a>
 		</div>
 	</div>
 	<div id="my_screen" style="flex: 8; display: flex; flex-direction: column;">
@@ -227,7 +227,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="borderline"	style="flex: 1; margin-top: 10px; margin-right: 10px;">
+		<div class="borderline"	style="flex: 1; margin-top: 10px; margin-right: 10px; margin-bottom: 20px;">
 			<form action="drop"  method="post">
 				<input name="member_no" value= ${member_no} type="hidden" />
 				<span>계정탈퇴를 하시면 모든 데이터가 사라집니다. 탈퇴를 진행하시겠습니까? </span><a><button type="submit">회원탈퇴</button></a>

@@ -365,8 +365,20 @@ public class ManagerController {
 		}
 	}
 	
-	
-		
-	
+	//관리자 no가 답한 문의글 목록
+	 @PostMapping("manager_inquiry")
+	 public void manager_inquiry(int member_no, Model model) {
+		 List<ManagerInquiryVO> manager_inquiry = dao.manager_inquiry(member_no);
+		 //System.out.println("사이즈: " + manager_inquiry.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_inquiry", manager_inquiry);
+	 }
+	 
+	//관리자no의 활동페이지에서 문의글 하나 가져오기
+	@RequestMapping("one_inquiry2")
+	public void one_inquiry2(int inquiry_no, Model model) {
+		//System.out.println(inquiry_no);
+		InquiryVO bag = dao.one_inquiry(inquiry_no);
+		model.addAttribute("bag", bag);
+	}
 	
 }

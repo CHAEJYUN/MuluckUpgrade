@@ -186,16 +186,39 @@
 	</select>
 	
 	<!-- 관리자 승인 -->
-	<update id="manager_yes"  parameterType="int">
+	<update id="manager_yes" parameterType="int">
 		update member set member_manager = 1
 		where member_no = #{member_no}
 	</update>
 		
 	<!-- 관리자 탈락 -->
-	<update id="manager_no"  parameterType="int">
+	<update id="manager_no" parameterType="int">
 		update member set member_manager = 0
 		where member_no = #{member_no}
 	</update>	
 	
+	<!-- 관리자 no가 답한 문의글 목록 -->
+	<select id="manager_inquiry" parameterType="int" resultType="ManagerInquiryVO">
+	SELECT 
+	    ROW_NUMBER() OVER(ORDER BY i.inquiry_adate DESC) AS no,
+	    i.inquiry_no,
+	    i.inquiry_title,
+	    i.inquiry_writer,
+	    m_writer.member_nickname AS writer_nickname,
+	    DATE_FORMAT(i.inquiry_udate, '%Y-%m-%d') AS inquiry_udate,
+	    i.inquiry_manager,
+	    m_manager.member_nickname AS answer_nickname,
+	    DATE_FORMAT(i.inquiry_adate, '%Y-%m-%d') AS inquiry_adate
+	FROM 
+	    inquiry i
+	LEFT JOIN 
+	    member m_writer ON i.inquiry_writer = m_writer.member_no
+	LEFT JOIN 
+	    member m_manager ON i.inquiry_manager = m_manager.member_no
+	WHERE 
+	    i.inquiry_manager = #{member_no}
+	ORDER BY 
+	    i.inquiry_adate DESC;
+	</select>
 	
 </mapper>
