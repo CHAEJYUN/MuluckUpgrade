@@ -15,26 +15,70 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/manager.css">
 <script type="text/javascript">
+$(function() {
 	$('#wait').hide();
 	$('#modify').hide();
-	const manager_no = ${bag.member_no}; //불러온 회원 정보의 no
 	const manager_status = ${bag.member_manager}; //불러온 회원 정보의 member_manager
+	const manager_no = ${bag.member_no}; //불러온 회원 정보의 no
+	const manager_email = "${bag.member_email}"; //불러온 회원 정보의 이메일 member_email
+	const manager_name = "${bag.member_name}"; //불러온 회원 정보의 이메일 member_email
 	
 	if (manager_status == 2) { //매니저 승인 대기상태 일떄
 		$('#wait').show();
-	}else if(manager_status == 1) { //매니저 일떄
 		$('#modify').hide();
-		
-	//매니저 활동 불러오는거 적을 부분
-	
-	
+	}else if(manager_status == 1) { //매니저 일떄
+		$('#wait').hide();
+		$('#modify').show();
 	}else { //회원 상태일때
 		$('#wait').hide();
 		$('#modify').hide();
 	}
 	
+	// 관리자 승인
+	$('.manager_yes').click(function() {
+		$.ajax({
+			type: "POST",
+			url: "manager_yes",
+			data: {
+				member_no: manager_no,
+				member_email: manager_email,
+				member_name: manager_name
+				},
+			success: function(x) {
+				if (x === true) {
+                    window.location.href = "${pageContext.request.contextPath}/manager/managerRegister.jsp";
+                }
+			},
+			error: function(xhr, status, error) {
+                console.log(error);
+                // 요청 실패 시 처리할 로직
+            }// error
+		})// ajax
+	})// manager_yes
 	
+	// 관리자 탈락
+	$('.manager_no').click(function() {
+		$.ajax({
+			type: "POST",
+			url: "manager_no",
+			data: {
+				member_no: manager_no,
+				member_email: manager_email,
+				member_name: manager_name
+				},
+			success: function(x) {
+				if (x === true) {
+                    window.location.href = "${pageContext.request.contextPath}/manager/managerRegister.jsp";
+                }
+			},
+			error: function(xhr, status, error) {
+                console.log(error);
+                // 요청 실패 시 처리할 로직
+            }// error
+		})// ajax
+	})// manager_no
 	
+})
 </script>
 </head>
 <body>
@@ -60,21 +104,15 @@
 		</div>
 		 
 		<!-- 매니저 승인 대기 상태 일때 -->
-		<div id="wait" class="borderline" style="display: flex; flex-direction: row; margin-bottom: 30px; padding-top: 20px; padding-bottom: 20px;">
-			<button id="manager_yes" type="button" style="flex: 1; margin: auto 10px; text-align: center;">매니저 승인</button>
-			<button id="manager_no" type="button" style="flex: 1; margin: auto 10px; text-align: center;">매니저 탈락</button>
-			
-			<!-- 승인인지 탈릭인지 메일 보내기 -->
+		<div id="wait" class="borderline" style="display: flex; flex-direction: row; margin-bottom: 30px; padding: 2% 10%;">
+			<button class="manager_yes" type="button" style="flex: 1; margin: auto 10px; text-align: center;">관리자 승인</button>
+			<button class="manager_no" type="button" style="flex: 1; margin: auto 10px; text-align: center;">관리자 탈락</button>
 		</div>
 		
-		<%--
 		<!-- 이미 매니저 상태 일때 -->
-		<div id="modify" class="borderline" style="display: flex; flex-direction: row; margin-bottom: 30px; padding-top: 20px; padding-bottom: 20px;">
-			<button id="manager_no" type="button" style="flex: 1; margin: auto 10px; text-align: center;">매니저 퇴출</button>
-			
-			매니저 활동내역불러오는 부분
+		<div id="modify" class="borderline" style="display: flex; flex-direction: row; margin-bottom: 30px; padding: 2% 10%;">
+			<button class="manager_no" type="button" style="flex: 1; margin: auto 10px; text-align: center;">관리자 퇴출</button>
 		</div>
-		 --%>
 	</div>
 </div>
 

@@ -290,6 +290,82 @@ public class ManagerController {
 		ManagerVO bag = dao.manager_information(member_no);
 		model.addAttribute("bag", bag);
 	}
+	
+	// 관리자 승인
+	@RequestMapping(value = "manager_yes", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean manager_yes(ManagerVO bag) {
+		System.out.println("문의답변 등록");
+		int member_no = bag.getMember_no();
+		int result = dao.manager_yes(member_no);
+		if(result != 0) {
+			//이메일 전송
+			String setFrom = "hhhj0525@gmail.com"; //보내는 이메일
+			String toMail = bag.getMember_email(); //받는 사람 이메일
+			String title = "[무우럭] 관리자로 등록 되었습니다.";
+			String content = 
+					"<h4>WELCOME! to Muluck 🌱</h4><br><b>" +
+					bag.getMember_name() + "</b>님(" + bag.getMember_email() + ") <br>" +		
+					"<b>무우럭</b> 플랫폼 관리자로 등록되었습니다.🌱 <br>" + 
+					"관리자의 역할은 <b>문의글 답변/수정, 관리자 승인</b> 입니다.<br>" + 
+					"무우럭을 더 좋은 방향으로 함께 이끌어 갑시다. 감사합니다.<br>" +
+					"관리자 드림🌱";
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+				helper.setFrom(setFrom);
+				helper.setTo(toMail);
+				helper.setSubject(title);
+				helper.setText(content,true);
+				mailSender.send(message);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	// 관리자 탈락
+	@RequestMapping(value = "manager_no", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean manager_no(ManagerVO bag) {
+		System.out.println("문의답변 등록");
+		int member_no = bag.getMember_no();
+		int result = dao.manager_no(member_no);
+		if(result != 0) {
+			//이메일 전송
+			String setFrom = "hhhj0525@gmail.com"; //보내는 이메일
+			String toMail = bag.getMember_email(); //받는 사람 이메일
+			String title = "[무우럭] 관리자 등록이 취소 되었습니다.";
+			String content = 
+					"<h4>안녕하세요 Muluck의 관리자 입니다. 🌱</h4><br><b>" +
+					bag.getMember_name() + "</b>님(" + bag.getMember_email() + ") <br>" +		
+					"무우럭의 관리자는 무우럭의 직원만 등록이 가능한 이유로 등록이 취소된점 안내드립니다.<br>" +
+					"가입된 계정은 자동으로 <b>회원 계정</b>🌱으로 등록 되었습니다.<br>" + 
+					"무우럭에 가입신청을 해주셔서 다시한번 <b>감사합니다.</b>🌱 <br>" + 
+					"관리자 드림🌱";
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+				helper.setFrom(setFrom);
+				helper.setTo(toMail);
+				helper.setSubject(title);
+				helper.setText(content,true);
+				mailSender.send(message);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	
 		
 	
 	

@@ -12,10 +12,7 @@
 			<td class="top right">${bag.no}</td>
 			<td class="top right"><a href="../manager/manager_information?member_no=${bag.member_no}">${bag.member_nickname}</a></td>
 			<td class="top">
-				<form action=wait>
-					<input name="member_no" value="${bag.member_no}" type="hidden"/>
-					<a href="../manager/manager_information?member_no=${bag.member_no}"><button type="button">확인</button></a>
-				</form>
+				<a href="../manager/manager_information?member_no=${bag.member_no}"><button type="button">확인</button></a>
 			</td>
 		</tr>
 	</c:forEach>

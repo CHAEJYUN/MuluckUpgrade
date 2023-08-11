@@ -13,9 +13,9 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ms-auto py-4 py-lg-0">
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" 
-				id="#userNickname">${member_nickname} 매니저님</a></li>
+				id="#userNickname">${member_nickname} 관리자님</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-					href="${pageContext.request.contextPath}/manager/managerPage">매니저페이지</a></li>
+					href="${pageContext.request.contextPath}/manager/managerPage">관리자페이지</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="${pageContext.request.contextPath}/manager/logout">로그아웃</a></li>
 			</ul>

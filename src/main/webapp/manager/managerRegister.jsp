@@ -63,8 +63,8 @@ $(function() {
 <%@ include file="manager_header.jsp"%>
 <div style="display: flex; flex-direction: column; margin-right: 10px;">
 	<div id="btns" style="flex: 2;">
-		<button class="borderbtn" id="wait" style="margin-right: 10px;">매니저 승인 대기</button>
-		<button class="borderbtn" id="list">매니저 목록</button>
+		<button class="borderbtn" id="wait" style="margin-right: 10px;">관리자 승인 대기</button>
+		<button class="borderbtn" id="list">관리자 목록</button>
 	</div>
 	<div class="borderline"	id="manager" style="flex: 8; margin-bottom: 5px;"></div>
 </div>

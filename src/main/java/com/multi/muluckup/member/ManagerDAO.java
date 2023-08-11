@@ -121,5 +121,18 @@ public class ManagerDAO {
 		return bag;
 	}
 	
+	// 관리자 승인
+	public int manager_yes(int member_no) {
+		int result = my.update("manager.manager_yes", member_no);
+		return result;
+	}
+	
+	// 관리자 탈락
+	public int manager_no(int member_no) {
+		int result = my.update("manager.manager_no", member_no);
+		return result;
+	}
+	
+	
 	
 }
