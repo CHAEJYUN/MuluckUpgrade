@@ -68,3 +68,9 @@ td > a {
 	color: inherit;
 	text-decoration: none;
 }
+
+.info {
+	text-align: left;
+    padding-left: 35%;
+    padding-top: 20px;
+}

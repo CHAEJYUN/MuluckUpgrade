@@ -28,7 +28,7 @@ $(function() {
 		type: "POST", // POST 요청으로 설정
 /* 	    data: {member_no : memberNo}, // member_no 값을 데이터로 전송 */
 		success: function(result) {
-			$('#inquiry').append(result).css("font-size", "15px");
+			$('#inquiry').append(result).css("font-size", "25px");
 		}//success
 	})//ajax
 	
@@ -42,7 +42,7 @@ $(function() {
 			method: "POST", // POST 요청으로 설정
 /* 		    data: {member_no: memberNo}, // member_no 값을 데이터로 전송 */
 			success: function(x) {
-				$('#inquiry').append(x).css("font-size", "15px");
+				$('#inquiry').append(x).css("font-size", "25px");
 			}//success
 		})//ajax
 	})//wait
@@ -57,7 +57,7 @@ $(function() {
 			method: "POST", // POST 요청으로 설정
 /* 		    data: {member_no: memberNo}, // member_no 값을 데이터로 전송 */
 			success: function(x) {
-				$('#inquiry').append(x).css("font-size", "15px");
+				$('#inquiry').append(x).css("font-size", "25px");
 			}//success
 		})//ajax
 	})//complete	

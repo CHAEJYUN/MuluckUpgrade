@@ -267,5 +267,30 @@ public class ManagerController {
 		}
 	}
 	
+	 // 매니저 승인 대기 목록 가져오기
+	 @PostMapping("manager_wait")
+	 public void manager_wait(Model model) {
+		 List<ManagerVO> manager_wait = dao.manager_wait();
+		 //System.out.println("사이즈: " + manager_wait.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_wait", manager_wait);
+	 }
+	 
+	 // 매니저 목록 가져오기
+	 @PostMapping("manager_list")
+	 public void manager_list(Model model) {
+		 List<ManagerVO> manager_list = dao.manager_list();
+		 //System.out.println("사이즈: " + manager_list.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_list", manager_list);
+	 }
+	 
+	// 회원 정보 가져오기
+	@RequestMapping("manager_information")
+	public void manager_information(int member_no, Model model) {
+		//System.out.println(member_no);
+		ManagerVO bag = dao.manager_information(member_no);
+		model.addAttribute("bag", bag);
+	}
+		
+	
 	
 }

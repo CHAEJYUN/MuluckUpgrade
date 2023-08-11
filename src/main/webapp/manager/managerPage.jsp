@@ -140,11 +140,11 @@
 <!-- 마이페이지 회원정보 -->
 <div id="my" style="display: flex; justify-content: space-between;">
 	<!-- 메뉴카테고리 -->
-	<div id="my_menu" style="flex: 2;">
+	<div id="my_menu" style="flex: 2;  min-height: 430px">
 		<div class="menu_list" id="menu_title">
 			<a class="menu"
 				style="color: #145f37; font-weight: 900; text-decoration: none; font-size: 30px;">
-				마이페이지 </a>
+				매니저페이지 </a>
 		</div>
 		<div class="menu_list">
 			<a class="menu" href="${pageContext.request.contextPath}/manager/managerPage"

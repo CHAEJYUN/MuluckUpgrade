@@ -140,7 +140,50 @@
 	<update id="inquiry_answer"  parameterType="InquiryVO">
 		UPDATE inquiry SET inquiry_manager = #{inquiry_manager}, inquiry_answer = #{inquiry_answer}, inquiry_adate = now()
 		WHERE inquiry_no = #{inquiry_no};
-	</update>	
+	</update>
+	
+	<!-- 매니저 승인 대기 목록 가져오기 -->
+	<select id="manager_wait" resultType="ManagerVO">
+		SELECT 
+		    ROW_NUMBER() OVER(ORDER BY m.member_no) AS no,
+		    m.member_no,
+		    m.member_nickname,
+		    m.member_name,		    
+		    m.member_id,
+		    m.member_email,
+		    m.member_tel,
+		    m.member_manager
+		FROM 
+		    member m
+		WHERE 
+		    m.member_manager = 2
+		ORDER BY 
+		    m.member_no;
+	</select>
+	
+	<!-- 매니저 목록 가져오기 -->
+	<select id="manager_list" resultType="ManagerVO">
+		SELECT 
+		    ROW_NUMBER() OVER(ORDER BY m.member_no) AS no,
+		    m.member_no,
+		    m.member_nickname,
+		    m.member_name,		    
+		    m.member_id,
+		    m.member_email,
+		    m.member_tel,
+		    m.member_manager
+		FROM 
+		    member m
+		WHERE 
+		    m.member_manager = 1
+		ORDER BY 
+		    m.member_no;
+	</select>
+	
+	<!-- 문의글 하나 가져오기 -->
+	<select id="manager_information" parameterType="int" resultType="ManagerVO">
+		select * from member where member_no = #{member_no}
+	</select>	
 	
 	
 </mapper>

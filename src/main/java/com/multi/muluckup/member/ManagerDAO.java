@@ -84,7 +84,7 @@ public class ManagerDAO {
 		return completeList;
 	}
 	
-	// 문의글 검색
+	// 문의글 하나 가져오기 / 문의글 검색
 	public InquiryVO one_inquiry(int inquiry_no) {
 		InquiryVO bag = my.selectOne("manager.one_inquiry", inquiry_no);
 		return bag;
@@ -102,5 +102,24 @@ public class ManagerDAO {
 		int result = my.update("manager.inquiry_answer", bag);
 		return result;
 	}
+	
+	// 매니저 승인 대기 목록 가져오기
+	public List<ManagerVO> manager_wait() {
+		List<ManagerVO> manager_wait = my.selectList("manager.manager_wait");
+		return manager_wait;
+	}
+	
+	// 매니저 목록 가져오기
+	public List<ManagerVO> manager_list() {
+		List<ManagerVO> manager_list = my.selectList("manager.manager_list");
+		return manager_list;
+	}
+	
+	// 회원 정보 가져오기
+	public ManagerVO manager_information(int member_no) {
+		ManagerVO bag = my.selectOne("manager.manager_information", member_no);
+		return bag;
+	}
+	
 	
 }
