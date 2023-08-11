@@ -63,7 +63,7 @@ $(function() {
             },
             success: function(x) {
                 if (x === true) {
-                    window.location.href = "${pageContext.request.contextPath}/manager/managerInquiry.jsp";
+                    window.location.href = "${pageContext.request.contextPath}/manager/managerActivity.jsp";
                 }
             },
             error: function(xhr, status, error) {
@@ -90,7 +90,7 @@ $(function() {
 <div id="my" style="display: flex; justify-content: space-between;">
 	<div id="my_screen" style="flex: 8; margin-top: 10px; margin-right: 10px;">
 		<div style="max-height: 30px;  margin-left: 5%; margin-top: 20px; margin-bottom: 80px;">
-			<a href="managerInquiry.jsp"><button style="float: left;">이전</button></a>
+			<a href="managerActivity.jsp"><button style="float: left;">이전</button></a>
 		</div>
 		<div class="borderline" style="margin-top: 15px;">
 			<div style="margin-top: 10px;">

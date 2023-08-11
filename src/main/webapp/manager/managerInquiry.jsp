@@ -28,7 +28,7 @@ $(function() {
 		type: "POST", // POST 요청으로 설정
 /* 	    data: {member_no : memberNo}, // member_no 값을 데이터로 전송 */
 		success: function(result) {
-			$('#inquiry').append(result).css("font-size", "15px");
+			$('#inquiry').append(result).css("font-size", "25px");
 		}//success
 	})//ajax
 	
@@ -42,7 +42,7 @@ $(function() {
 			method: "POST", // POST 요청으로 설정
 /* 		    data: {member_no: memberNo}, // member_no 값을 데이터로 전송 */
 			success: function(x) {
-				$('#inquiry').append(x).css("font-size", "15px");
+				$('#inquiry').append(x).css("font-size", "25px");
 			}//success
 		})//ajax
 	})//wait
@@ -57,7 +57,7 @@ $(function() {
 			method: "POST", // POST 요청으로 설정
 /* 		    data: {member_no: memberNo}, // member_no 값을 데이터로 전송 */
 			success: function(x) {
-				$('#inquiry').append(x).css("font-size", "15px");
+				$('#inquiry').append(x).css("font-size", "25px");
 			}//success
 		})//ajax
 	})//complete	
@@ -72,8 +72,7 @@ $(function() {
 		<button class="borderbtn" id="wait" style="margin-right: 10px;">답변 대기 문의</button>
 		<button class="borderbtn" id="complete">답변 완료 문의</button>
 	</div>
-	<div class="borderline"	id="inquiry" style="flex: 8; margin-bottom: 5px;">
-	</div>
+	<div class="borderline"	id="inquiry" style="flex: 8; margin-bottom: 5px;"></div>
 </div>
 
 </body>

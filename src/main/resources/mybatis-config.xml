@@ -20,6 +20,7 @@
 		<typeAlias type="com.multi.muluckup.member.InquiryVO" alias="inquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.MemberInquiryVO" alias="memberinquiryVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.member.ManagerInquiryVO" alias="managerInquiryVO"></typeAlias>
+		<typeAlias type="com.multi.muluckup.member.ManagerVO" alias="managerVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.card.CardVO" alias="cardVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.calendarVO" alias="calendarVO"></typeAlias>
 		<typeAlias type="com.multi.muluckup.diary.diaryVO" alias="diaryVO"></typeAlias>

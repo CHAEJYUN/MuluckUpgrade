@@ -267,5 +267,118 @@ public class ManagerController {
 		}
 	}
 	
+	 // 매니저 승인 대기 목록 가져오기
+	 @PostMapping("manager_wait")
+	 public void manager_wait(Model model) {
+		 List<ManagerVO> manager_wait = dao.manager_wait();
+		 //System.out.println("사이즈: " + manager_wait.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_wait", manager_wait);
+	 }
+	 
+	 // 매니저 목록 가져오기
+	 @PostMapping("manager_list")
+	 public void manager_list(Model model) {
+		 List<ManagerVO> manager_list = dao.manager_list();
+		 //System.out.println("사이즈: " + manager_list.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_list", manager_list);
+	 }
+	 
+	// 회원 정보 가져오기
+	@RequestMapping("manager_information")
+	public void manager_information(int member_no, Model model) {
+		//System.out.println(member_no);
+		ManagerVO bag = dao.manager_information(member_no);
+		model.addAttribute("bag", bag);
+	}
+	
+	// 관리자 승인
+	@RequestMapping(value = "manager_yes", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean manager_yes(ManagerVO bag) {
+		System.out.println("문의답변 등록");
+		int member_no = bag.getMember_no();
+		int result = dao.manager_yes(member_no);
+		if(result != 0) {
+			//이메일 전송
+			String setFrom = "hhhj0525@gmail.com"; //보내는 이메일
+			String toMail = bag.getMember_email(); //받는 사람 이메일
+			String title = "[무우럭] 관리자로 등록 되었습니다.";
+			String content = 
+					"<h4>WELCOME! to Muluck 🌱</h4><br><b>" +
+					bag.getMember_name() + "</b>님(" + bag.getMember_email() + ") <br>" +		
+					"<b>무우럭</b> 플랫폼 관리자로 등록되었습니다.🌱 <br>" + 
+					"관리자의 역할은 <b>문의글 답변/수정, 관리자 승인</b> 입니다.<br>" + 
+					"무우럭을 더 좋은 방향으로 함께 이끌어 갑시다. 감사합니다.<br>" +
+					"관리자 드림🌱";
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+				helper.setFrom(setFrom);
+				helper.setTo(toMail);
+				helper.setSubject(title);
+				helper.setText(content,true);
+				mailSender.send(message);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	// 관리자 탈락
+	@RequestMapping(value = "manager_no", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean manager_no(ManagerVO bag) {
+		System.out.println("문의답변 등록");
+		int member_no = bag.getMember_no();
+		int result = dao.manager_no(member_no);
+		if(result != 0) {
+			//이메일 전송
+			String setFrom = "hhhj0525@gmail.com"; //보내는 이메일
+			String toMail = bag.getMember_email(); //받는 사람 이메일
+			String title = "[무우럭] 관리자 등록이 취소 되었습니다.";
+			String content = 
+					"<h4>안녕하세요 Muluck의 관리자 입니다. 🌱</h4><br><b>" +
+					bag.getMember_name() + "</b>님(" + bag.getMember_email() + ") <br>" +		
+					"무우럭의 관리자는 무우럭의 직원만 등록이 가능한 이유로 등록이 취소된점 안내드립니다.<br>" +
+					"가입된 계정은 자동으로 <b>회원 계정</b>🌱으로 등록 되었습니다.<br>" + 
+					"무우럭에 가입신청을 해주셔서 다시한번 <b>감사합니다.</b>🌱 <br>" + 
+					"관리자 드림🌱";
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+				helper.setFrom(setFrom);
+				helper.setTo(toMail);
+				helper.setSubject(title);
+				helper.setText(content,true);
+				mailSender.send(message);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//관리자 no가 답한 문의글 목록
+	 @PostMapping("manager_inquiry")
+	 public void manager_inquiry(int member_no, Model model) {
+		 List<ManagerInquiryVO> manager_inquiry = dao.manager_inquiry(member_no);
+		 //System.out.println("사이즈: " + manager_inquiry.size()); //사이즈를 찍어보세요.
+		 model.addAttribute("manager_inquiry", manager_inquiry);
+	 }
+	 
+	//관리자no의 활동페이지에서 문의글 하나 가져오기
+	@RequestMapping("one_inquiry2")
+	public void one_inquiry2(int inquiry_no, Model model) {
+		//System.out.println(inquiry_no);
+		InquiryVO bag = dao.one_inquiry(inquiry_no);
+		model.addAttribute("bag", bag);
+	}
 	
 }
