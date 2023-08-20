@@ -89,7 +89,7 @@ public class ManagerController {
 			
 			return "manager/managerJoin";
 		}else {
-			return "redirect:/managerJoin.jsp?error=true";
+			return "../../manager/managerJoin";
 		}
 	}
 	 

@@ -68,7 +68,7 @@ public class MemberController {
 			
 			return "member/join";
 		}else {
-			return "redirect:/join.jsp?error=true";
+			return "../../member/join";
 		}
 	}
 	
