@@ -69,7 +69,18 @@ public class ManagerDAO {
 	
 	//회원탈퇴
 	public void drop(int member_no) {
-		my.delete("manager.drop", member_no);
+		my.update("member.drop1", member_no);
+		my.update("member.drop2", member_no);
+		my.update("member.drop3", member_no);
+		my.update("member.drop4", member_no);
+		my.update("member.drop5", member_no);
+		my.update("member.drop6", member_no);
+		my.update("member.drop7", member_no);
+		my.update("member.drop8", member_no);
+		my.update("member.drop9", member_no);
+		my.delete("member.drop10", member_no);
+		my.delete("member.drop11", member_no);
+		my.delete("member.drop12", member_no);
 	}
 	
 	//답변 대기 문의 목록 가져오기
