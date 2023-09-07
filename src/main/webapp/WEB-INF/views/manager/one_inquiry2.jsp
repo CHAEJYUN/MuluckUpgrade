@@ -63,7 +63,7 @@ $(function() {
             },
             success: function(x) {
                 if (x === true) {
-                    window.location.href = "${pageContext.request.contextPath}/manager/managerActivity.jsp";
+                    window.location.href = "${pageContext.request.contextPath}/manager/managerInquiry.jsp";
                 }
             },
             error: function(xhr, status, error) {

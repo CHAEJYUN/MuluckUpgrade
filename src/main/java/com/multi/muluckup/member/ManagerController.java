@@ -69,11 +69,13 @@ public class ManagerController {
 			//이메일 전송
 			String setFrom = "hhhj0525@gmail.com"; //보내는 이메일
 			String toMail = bag.getMember_email(); //받는 사람 이메일
-			String title = "[무우럭] 매니저 등록 신청하셨습니다.";
+			String title = "[무우럭] 관리자 등록 신청하셨습니다.";
 			String content = 
-					"<h4>WELCOME! to Muluck 🌱</h4><br><b>" +
-							bag.getMember_name() + "</b>님(" + bag.getMember_email() + ") <br>" +		
-							"<b>무우럭</b> 플랫폼 관리자승인 대기 상태 입니다.🌱";
+					"<h4>WELCOME! to Muluck 🌱</h4>" +
+							"<b>" + bag.getMember_name() + "</b>님(" + bag.getMember_email() + 
+							") 관리자 등록 신청 감사합니다.<br>" +		
+							"현재 <b>무우럭</b> 플랫폼 관리자 승인 대기 상태 입니다.<br>" + 
+							"승인 결과를 추후 이메일로 발송 할 예정입니다. 감사합니다.🌱";
 			try {
 				MimeMessage message = mailSender.createMimeMessage();
 				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");

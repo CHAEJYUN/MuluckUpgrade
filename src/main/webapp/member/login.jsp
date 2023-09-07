@@ -89,7 +89,6 @@ $(function() {
         }
     });
 	
-	
 });
 </script>
 <style type="text/css">
@@ -107,8 +106,9 @@ div.pw i{
 </head>
 <body>
 	<div class="muluck_logo">
-		<a href="${pageContext.request.contextPath}/home.jsp"><img src="../resources/assets/img/무우럭.png"
-			alt="로고"></a>
+		<a href="${pageContext.request.contextPath}/home.jsp">
+			<img src="../resources/assets/img/무우럭.png" alt="로고">
+		</a>
 	</div>
 	<div class="myform">
 		<div class="go_login"><a href="${pageContext.request.contextPath}/home.jsp"><button>X</button></a></div>

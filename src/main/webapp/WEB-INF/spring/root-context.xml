@@ -17,6 +17,18 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="1234"></property>
 	</bean>
+	
+<!--
+	aws의 RDB 서버 배포를 위한 db연결로 바꾸려면 위에꺼를 아래껄루 바꿈
+	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://db-muluck.crrphqniwfbf.ap-northeast-2.rds.amazonaws.com:3306/muluck"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="hhis9818!"></property>
+	</bean>
+-->
 
 	<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dbcp"></property>

@@ -26,7 +26,11 @@
 	<h1 class="site-heading text-center text-faded d-none d-lg-block">
 		<div style="display: flex; justify-content: center;">
 			<a href="${pageContext.request.contextPath}/manager/managerInquiry.jsp">
-				<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/>
+ 				<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/>
+			<%-- s3 버킷 연결시 아래처럼 바꾸면 됨
+				<% String s3 = "https://muluck.s3.ap-northeast-2.amazonaws.com/"; %>
+				<img src="<%= s3 %>resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/>
+			 --%>	
 			</a>
 		</div>
 	</h1>

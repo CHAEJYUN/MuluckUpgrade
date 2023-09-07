@@ -30,7 +30,7 @@
 $(function() {
 	const member_no = ${member_no};
 	
-	//시작하자마자 게시글 버튼 눌려 있기
+	//시작하자마자 문의글 목록 불러오기
 	$.ajax({
 		url: "my_inquiry",
 		type: "POST", // POST 요청으로 설정
