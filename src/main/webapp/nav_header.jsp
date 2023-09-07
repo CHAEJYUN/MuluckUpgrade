@@ -27,7 +27,12 @@
 		<h1 class="site-heading text-center text-faded d-none d-lg-block">
 			<div style="display: flex; justify-content: center;">
 				<a href="${pageContext.request.contextPath}/main/home.jsp">
-				<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/></a>
+ 				<img src="${pageContext.request.contextPath}/resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/> 
+				<%-- //s3 연결하면 이렇게 바꿈
+					<% String s3 = "https://muluck.s3.ap-northeast-2.amazonaws.com/"; %>
+					<img src="<%= s3 %>resources/assets/img/무우럭.png" style="display: block; width: 100%; height: auto;"/>
+				--%>
+				</a>
 			</div>
 		</h1>
 	</header>

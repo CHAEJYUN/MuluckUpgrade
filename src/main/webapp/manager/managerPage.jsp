@@ -8,19 +8,13 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>마이페이지</title>
-<link rel="icon" type="image/x-icon"
-	href="../resources/assets/favicon.ico" />
+<title>관리자마이페이지</title>
+<link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <!-- Google fonts-->
-<link
-	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i"
-	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../resources/css/styles.css" type="text/css"
-	rel="stylesheet" />
+<link href="../resources/css/styles.css" type="text/css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css"
@@ -139,44 +133,28 @@
 	});
 	
 </script>
- <!-- 토글 - 드롭다운 -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../resources/js/scripts.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </head>
 <body>
-<!-- 네비게이션바 header -->
-<%@ include file="../nav_header.jsp"%>
+<%@ include file="manager_header.jsp"%>
 
 <!-- 마이페이지 회원정보 -->
 <div id="my" style="display: flex; justify-content: space-between;">
 	<!-- 메뉴카테고리 -->
-	<div id="my_menu" style="flex: 2;">
+	<div id="my_menu" style="flex: 2;  min-height: 450px">
 		<div class="menu_list" id="menu_title">
 			<a class="menu"
 				style="color: #145f37; font-weight: 900; text-decoration: none; font-size: 30px;">
-				마이페이지 </a>
+				관리자페이지 </a>
 		</div>
 		<div class="menu_list">
-			<a class="menu" href="${pageContext.request.contextPath}/member/mypage"
+			<a class="menu" href="${pageContext.request.contextPath}/manager/managerPage"
 				style="text-decoration: underline; font-weight: bolder; background: lightgray; font-size: 25px;">
-				회원 정보 </a>
+				관리자 정보 </a>
 		</div>
 		<div class="menu_list">
-			<a class="menu" href="${pageContext.request.contextPath}/member/myActivity.jsp"
+			<a class="menu" href="${pageContext.request.contextPath}/manager/managerActivity.jsp"
 				style="text-decoration: none; font-weight: 500; font-size: 25px;">
-				나의 활동 </a>
-		</div>
-		<div class="menu_list">
-			<a class="menu" href="${pageContext.request.contextPath}/member/myFollow.jsp"
-				style="text-decoration: none; font-weight: 500; font-size: 25px;">
-				팔로우 </a>
-		</div>
-		<div class="menu_list">
-			<a class="menu" href="${pageContext.request.contextPath}/member/myInquiry.jsp"
-				style="text-decoration: none; font-weight: 500; font-size: 25px;">
-				문의하기 </a>
+				관리자 활동 </a>
 		</div>
 	</div>
 	<div id="my_screen" style="flex: 8; display: flex; flex-direction: column;">
@@ -249,10 +227,10 @@
 				</form>
 			</div>
 		</div>
-		<div class="borderline"	style="flex: 1; margin-top: 10px; margin-right: 10px;">
+		<div class="borderline"	style="flex: 1; margin-top: 10px; margin-right: 10px; margin-bottom: 20px;">
 			<form action="drop"  method="post">
 				<input name="member_no" value= ${member_no} type="hidden" />
-				<span>회원탈퇴를 하시면 모든 데이터가 사라집니다. 탈퇴를 진행하시겠습니까? </span><a><button type="submit">회원탈퇴</button></a>
+				<span>계정탈퇴를 하시면 모든 데이터가 사라집니다. 탈퇴를 진행하시겠습니까? </span><a><button type="submit">회원탈퇴</button></a>
 			</form>
 		</div>
 	</div>

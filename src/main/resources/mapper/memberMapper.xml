@@ -95,8 +95,43 @@
 	    where member_no = #{member_no}
 	</update>
 	
+	<!-- 탈퇴전 글, 댓글, 문의글 등 모두 탈퇴 회원으로 바꾸기 -->
+	<update id="drop1"  parameterType="int">
+		UPDATE inquiry SET inquiry_writer = 0 WHERE inquiry_writer = #{member_no}
+	</update>
+	<update id="drop2"  parameterType="int">
+		UPDATE inquiry SET inquiry_manager = 0 WHERE inquiry_manager = #{member_no}
+	</update>
+	<update id="drop3"  parameterType="int">
+		UPDATE calendar SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop4"  parameterType="int">
+		UPDATE bbs SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop5"  parameterType="int">
+		UPDATE bookmark SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop6"  parameterType="int">
+		UPDATE business SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop7"  parameterType="int">
+		UPDATE reply SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop8"  parameterType="int">
+		UPDATE heart SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	<update id="drop9"  parameterType="int">
+		UPDATE diary SET member_no = 0 WHERE member_no = #{member_no}
+	</update>
+	
 	<!-- 회원탈퇴 -->
-	<delete id="drop"  parameterType="int">
+	<delete id="drop10"  parameterType="int">
+		DELETE FROM follow WHERE follower_user = #{member_no}
+	</delete>
+	<delete id="drop11"  parameterType="int">
+		DELETE FROM follow WHERE following_user = #{member_no}
+	</delete>
+	<delete id="drop12"  parameterType="int">
 		delete from member where member_no = #{member_no}
 	</delete>
 	
@@ -169,7 +204,7 @@
 	
 	<!-- 북마크 리스트 -->
 	<select id="bookmarkList" parameterType="int" resultType="memberBookmarkVO">
-		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bbs.bbs_title, community.community_category
+		SELECT ROW_NUMBER() OVER (ORDER BY bbs.bbs_no) AS my_bookmark, bookmark.bookmark_no, bookmark.bbs_no, bbs.bbs_title, community.community_no, community.community_category
 		FROM bookmark
 		JOIN bbs ON bookmark.bbs_no = bbs.bbs_no
 		JOIN community ON bbs.community_no = community.community_no

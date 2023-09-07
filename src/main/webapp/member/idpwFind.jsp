@@ -6,7 +6,8 @@
 <title>Insert title here</title>
 <link rel="icon" type="image/x-icon" href="../resources/assets/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="../resources/css/login_join.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <script type="text/javascript">
 $(function() {
 	
@@ -88,7 +89,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-    <div class="muluck_logo"><a href="login.jsp"><img src="../resources/assets/img/무우럭.png" alt="로고"></a></div>
+    <div class="muluck_logo"><a href="${pageContext.request.contextPath}/home.jsp"><img src="../resources/assets/img/무우럭.png" alt="로고"></a></div>
     <div class="myform">
     	<div class="go_login"><a href="login.jsp"><button>X</button></a></div>
         <div id="login_title" class="title">아이디/패스워드 찾기</div>
@@ -119,6 +120,11 @@ $(document).ready(function() {
                 </div>
             </div>
             <a href="login.jsp"><button class="btn white_btn" id="go_login">로그인 하러가기</button></a>
+            <hr style="color: gray; margin-left: 5%; margin-right: 5%;">
+			<div class="text1" style="padding-bottom: 15px;">
+				관리자이신가요?&nbsp;&nbsp;&nbsp;
+				<a id="mLogin" href="${pageContext.request.contextPath}/manager/managerLogin.jsp">관리자 로그인으로 이동</a>
+			</div>
         </div>
     </div>
 </body>

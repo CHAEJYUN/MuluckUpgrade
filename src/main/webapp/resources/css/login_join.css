@@ -53,7 +53,7 @@ body{
 .myform a {
 	text-decoration: underline;
 	color: black;
-	font-family: KOTRAHOPE';
+	font-family: 'KOTRAHOPE';
 	font-size: 15px;
 }
 
@@ -161,7 +161,7 @@ td {
 	font-size: 12px;
 	font-weight: bold;
 }
-#loginResult {
+#loginResult, #mLoginResult {
 	text-align: center;
 }
 
@@ -240,12 +240,12 @@ input[type="checkbox"] {
 }
 
 .notsolo{
-	width: 150;
+	width: 121px;
 }
 
 /* SNS로그인 */
 #logo {
-	padding-bottom: 10px;
+/* 	padding-bottom: 10px; */
 	margin-top: 20px;
 }
 
@@ -263,4 +263,11 @@ input[type="checkbox"] {
 .cBc.active {
 	background-color: black;
 	color: white;
+}
+
+#mLogin {
+	text-decoration: underline;
+    color: #3b3b3b;
+    font-family: 'KOTRAHOPE';
+    font-size: 15px;
 }

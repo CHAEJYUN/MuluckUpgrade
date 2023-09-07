@@ -120,7 +120,7 @@ body{
 			<br> <b>반려식물 등록증을 만들어 보세요</b>
 		</h3>
 		<div style="float: right;">
-			<button type="submit" class="btn">등록</button>
+			<button type="submit" class="btn" style="margin-right: 50px;">등록</button>
 		</div>
 		<br>
 	</form>

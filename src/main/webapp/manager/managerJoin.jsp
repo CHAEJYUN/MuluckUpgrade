@@ -239,10 +239,11 @@ $(function() { //페이지가 로딩될때 실행
 <body>
 	<div class="muluck_logo"><a href="${pageContext.request.contextPath}/home.jsp"><img src="../resources/assets/img/무우럭.png" alt="로고"></a></div>
 	<div class="myform">
-	<div class="go_login"><a href="login.jsp"><button>X</button></a></div>
-		<div class="title">회원가입</div>
+	<div class="go_login"><a href="managerLogin.jsp"><button>X</button></a></div>
+		<div class="title">관리자가입신청</div>
 		<div class="center">
 			<form action="join" method="get">
+			<input name="member_manager" value=2 type="hidden" />
 				<table id="table1">
 					<tr>
 						<td colspan="2"><input class="input_join solo" id="email" name="member_email" type="email" placeholder=" 이메일" 
@@ -296,7 +297,7 @@ $(function() { //페이지가 로딩될때 실행
 					</tr>
 				</table>
 				<div class="text">가. 개인정보의 수집 및 이용 목적
-					무우럭(muluck)은 원활한 고객상담, 서비스 제공을 위하여 아래의 최소한의 개인정보를 필수로 수집하고 있습니다. 
+					무우럭(muluck)은 본인확인을 위하여 아래의 최소한의 개인정보를 필수로 수집하고 있습니다. 
 					처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
         
 	                나. 정보주체와 법정대리인의 권리ㆍ의무 및 행사방법

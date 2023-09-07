@@ -19,7 +19,8 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../resources/css/styles.css" type="text/css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css" href="../resources/css/myPage.css">
  <!-- 토글 - 드롭다운 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -46,10 +47,8 @@
 		}
 
 $(function() {
-	
 	// 초기에 버튼 비활성화
     checkValidation();
-	
 	//inquiry_title비어있을때 알림
 	$('#inquiry_title').blur(function() {
 		const title = $('#inquiry_title').val();
@@ -148,7 +147,7 @@ $(function() {
 			<form onsubmit="return false;">
 				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
 					<span style="flex: 3;">문의 제목:</span> 
-					<input id="inquiry_title" style="flex: 7; margin-right: 20%;" name="inquiry_title" type="text" placeholder=" 30글자 이내의 타이틀" maxlength="30";>
+					<input id="inquiry_title" style="flex: 7; margin-right: 20%;" name="inquiry_title" type="text" placeholder=" 30글자 이내의 타이틀" maxlength="30">
 				</div>
 				<div id="result_title" class="nullCheck"></div>
 				<div style="display: flex; flex-direction: row; margin-bottom: 10px;">
